@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Oswald:wght@200..700&family=Passion+One:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Jersey+20&display=swap');
+
+#SidebarI{
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: #c8e2e1;
+    font-size:4vh;
+}
+
+#RobotFont{
+    color: #00e0d1;
+    text-align: start;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+}
+#RobotFont-title{
+    color: #c2f3f0;
+    text-align: start;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
