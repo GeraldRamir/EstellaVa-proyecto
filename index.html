@@ -470,8 +470,8 @@
 								
 								<div class="card-body py-3">
                                     <div class="row">
-                                        <div class="col-xxl-5 d-flex">
-                                            <div class="w-100">
+                                        <div class="d-flex">
+                                            <div>
                                               <div class="row">
                                                 <!-- Información de préstamos activos -->
                                                 <div class="col-sm-6">
@@ -933,6 +933,7 @@
 	
 		const GOOGLE_API_KEY = "AIzaSyANb-3JWKBgTpLLSA5-iTSfM5Q0fRGuv2o"; // Tu API key
 		const CX = "734072da802984e1d"; // Tu CX
+		const guardarenLS=localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
 	
 		// Función para renderizar los chats guardados
 		function renderSavedChats() {
@@ -971,7 +972,8 @@
 	
 		// Función para guardar datos en almacenamiento local
 		function saveToLocalStorage() {
-			localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
+			guardarenLS;
+			
 		}
 	
 		// Función para añadir un mensaje al chat
@@ -994,7 +996,9 @@
 		// Guardar chat
 		saveChat.addEventListener("click", () => {
 			if (chatHistory.length > 0) {
-				const chatName = `Chat ${new Date().toLocaleString()}`;
+				console.log(savedChatsData[0].history[0].message)
+				
+				const chatName = `chat ${new Date().toLocaleString()}`;
 				savedChatsData.push({ name: chatName, history: [...chatHistory] });
 				saveToLocalStorage(); // Guardar en almacenamiento local
 				renderSavedChats(); // Actualizar la lista de chats guardados
