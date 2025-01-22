@@ -634,21 +634,35 @@
 								</div>
 							</div>
 						</div>
-                        <div class="col-lg-4 col-md-6 col-xl-6 d-flex order-3 order-xxl-1">
-							<div class="card flex-fill" style="background-color:  rgba(240, 219, 157, 0.527);">
-								<div class="card-header" style="background-color: rgb(176, 254, 206);">
-
-									<h5 class="card-title mb-0 text-dark">Calendario</h5>
-								</div>
-								<div class="card-body d-flex">
-									<div class="align-self-center w-100">
-										<div class="chart">
-											<div id="datetimepicker-dashboard"></div>
-										</div>
+						<div class="col-lg-4 col-md-6 col-xl-6 d-flex order-3 order-xxl-1">
+							<div class="col-lg-12">
+								<div class="card border rounded shadow-sm p-3" style="background-color: #c4e5ee;">
+									<h4 class="text-center mb-3 card-title">Preguntame lo que quieras</h4>
+									<!-- Ventana del chat -->
+									<div id="chatWindow" class="border p-2 overflow-auto" style="height: 300px; background-color: #f7f9fc; border-radius: 8px;">
+										<!-- Mensajes del chat -->
+									</div>
+									<!-- Input del chat -->
+									<div class="input-group mt-3">
+										<input type="text" id="userInput" class="form-control" placeholder="Escribe o utiliza el micrófono">
+										<button id="voiceButton" class="btn btn-secondary">
+											<i class="fas fa-microphone"></i>
+										</button>
+										<button id="sendButton" class="btn btn-primary">Enviar</button>
+									</div>
+									<div class="d-flex gap-2 mt-3">
+										<button id="clearChat" class="btn btn-danger w-50">Eliminar Chat</button>
+										<button id="saveChat" class="btn btn-success w-50">Guardar Chat</button>
+									</div>
+									<hr>
+									<h5 class="text-center mt-3">Chats Guardados</h5>
+									<div id="savedChats" class="overflow-auto" style="height: 100px;">
+										<!-- Chats guardados -->
 									</div>
 								</div>
 							</div>
 						</div>
+						
 					</div>
 
 					<div class="row">
@@ -906,6 +920,144 @@
 	<script src="js/app.js"></script>
 	<script src="js/document.js"></script>
 	<script src="./js/prueba.js"></script>
+	<script>
+		const chatWindow = document.getElementById("chatWindow");
+		const userInput = document.getElementById("userInput");
+		const voiceButton = document.getElementById("voiceButton");
+		const clearChat = document.getElementById("clearChat");
+		const saveChat = document.getElementById("saveChat");
+		const savedChats = document.getElementById("savedChats");
+	
+		let chatHistory = [];
+		let savedChatsData = JSON.parse(localStorage.getItem("savedChatsData")) || []; // Recuperar datos guardados
+	
+		const GOOGLE_API_KEY = "AIzaSyANb-3JWKBgTpLLSA5-iTSfM5Q0fRGuv2o"; // Tu API key
+		const CX = "734072da802984e1d"; // Tu CX
+	
+		// Función para renderizar los chats guardados
+		function renderSavedChats() {
+			savedChats.innerHTML = ""; // Limpiar la lista de chats guardados
+			savedChatsData.forEach((chat, index) => {
+				const chatItem = document.createElement("div");
+				chatItem.classList.add("mb-2", "p-2", "border", "rounded", "bg-light", "d-flex", "justify-content-between", "align-items-center");
+	
+				const chatName = document.createElement("span");
+				chatName.textContent = chat.name;
+				chatName.style.cursor = "pointer";
+	
+				chatName.addEventListener("click", () => {
+					// Mostrar el contenido del chat guardado
+					chatWindow.innerHTML = "";
+					chat.history.forEach(msg => {
+						addMessage(msg.sender, msg.message, msg.color, msg.sender === "Usuario" ? "right" : "left");
+					});
+				});
+	
+				const deleteButton = document.createElement("button");
+				deleteButton.textContent = "❌";
+				deleteButton.classList.add("btn", "btn-sm", "btn-danger");
+				deleteButton.addEventListener("click", () => {
+					// Eliminar el chat guardado
+					savedChatsData.splice(index, 1);
+					saveToLocalStorage(); // Guardar en almacenamiento local
+					renderSavedChats(); // Actualizar la interfaz
+				});
+	
+				chatItem.appendChild(chatName);
+				chatItem.appendChild(deleteButton);
+				savedChats.appendChild(chatItem);
+			});
+		}
+	
+		// Función para guardar datos en almacenamiento local
+		function saveToLocalStorage() {
+			localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
+		}
+	
+		// Función para añadir un mensaje al chat
+		function addMessage(sender, message, color, align) {
+			const messageDiv = document.createElement("div");
+			messageDiv.classList.add("mb-2", "p-2", "rounded");
+			messageDiv.style.backgroundColor = color;
+			messageDiv.style.maxWidth = "80%";
+			messageDiv.style.marginLeft = align === "left" ? "0" : "auto";
+			messageDiv.style.marginRight = align === "right" ? "0" : "auto";
+			messageDiv.style.textAlign = align;
+			messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+			chatWindow.appendChild(messageDiv);
+			chatWindow.scrollTop = chatWindow.scrollHeight;
+	
+			// Guardar en el historial del chat
+			chatHistory.push({ sender, message, color });
+		}
+	
+		// Guardar chat
+		saveChat.addEventListener("click", () => {
+			if (chatHistory.length > 0) {
+				const chatName = `Chat ${new Date().toLocaleString()}`;
+				savedChatsData.push({ name: chatName, history: [...chatHistory] });
+				saveToLocalStorage(); // Guardar en almacenamiento local
+				renderSavedChats(); // Actualizar la lista de chats guardados
+				chatHistory = []; // Limpiar el historial actual
+				chatWindow.innerHTML = ""; // Limpiar la ventana del chat
+			} else {
+				console.log("No hay mensajes para guardar.");
+			}
+		});
+	
+		// Borrar chat actual
+		clearChat.addEventListener("click", () => {
+			chatHistory = [];
+			chatWindow.innerHTML = "";
+		});
+	
+		// Reconocimiento de voz
+		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+		const recognition = new SpeechRecognition();
+		recognition.lang = "es-ES";
+	
+		recognition.onstart = () => {
+			voiceButton.textContent = "Escuchando...";
+		};
+	
+		recognition.onend = () => {
+			voiceButton.textContent = "🎤";
+		};
+	
+		recognition.onresult = (event) => {
+			const transcript = event.results[0][0].transcript;
+			addMessage("Usuario", transcript, "#d4f7c1", "right");
+			fetchSearchResults(transcript);
+		};
+	
+		voiceButton.addEventListener("click", () => {
+			recognition.start();
+		});
+	
+		// Función para buscar en Google
+		async function fetchSearchResults(query) {
+			try {
+				const response = await fetch(
+					`https://www.googleapis.com/customsearch/v1?q=${query}&key=${GOOGLE_API_KEY}&cx=${CX}`
+				);
+				const data = await response.json();
+				if (data.items && data.items.length > 0) {
+					const snippet = data.items[0].snippet || "No se encontró información relevante.";
+					addMessage("Asistente", snippet, "#f1d7e5", "left");
+				} else {
+					addMessage("Asistente", "No se encontraron resultados.", "#f1d7e5", "left");
+				}
+			} catch (error) {
+				addMessage("Asistente", "Error al realizar la búsqueda.", "#f1d7e5", "left");
+			}
+		}
+	
+		// Renderizar chats guardados al cargar la página
+		document.addEventListener("DOMContentLoaded", renderSavedChats);
+	</script>
+	
+	
+	
 	<script>
 		document.querySelector('#clientesRecientes').addEventListener('show.bs.collapse', () => {
 		document.querySelector('#iconCollapse').setAttribute('data-feather', 'chevron-up');
