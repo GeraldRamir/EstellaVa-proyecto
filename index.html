@@ -190,7 +190,7 @@
 				</li>
 		  
 				<li class="sidebar-header">
-                    <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
+                    <img src="./imagenes/Estella_robot_help-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
 				  Herramientas y ayuda
 				</li>
 		  
@@ -211,15 +211,31 @@
 		  
 				<li class="sidebar-item">
 				  <a class="sidebar-link" href="#">
-					<i class="align-middle" data-feather="check-square"></i>
-					<span class="align-middle">Sobre nosotros</span>
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/dicvhxpz.json"
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Sobre nosotros</span>
 				  </a>
 				</li>
 		  
 				<li class="sidebar-item">
 				  <a class="sidebar-link" href="#">
-					<i class="align-middle" data-feather="grid"></i>
-					<span class="align-middle">Contacto</span>
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/vpbspaec.json"
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#16a9c7,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Contacto</span>
 				  </a>
 				</li>
 			  </ul>
@@ -239,7 +255,13 @@
 							<!-- <button type="button" class="btn btn-danger" id="download-btn">descargar aplicacion</button> -->
 						</a>
                         <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="">
-						<div style="position: relative; width: 100%; max-width: 500px; margin: auto;">
+                        <div class="container rounded" style="height: 40px; background-color: #1f5869;width: 30vw">
+                            <div class="container rounded my-2">
+                                <p id="navFont" class="align-middle">Sabias que Estella es...</p>
+
+                            </div>
+                        </div>
+						<!-- <div style="position: relative; width: 100%; max-width: 500px; margin: auto;">
 							<form class=" d-flex" style="width: 100%; margin: auto;">
 							  <input 
 								class="form-control me-1 align-self-center" 
@@ -257,7 +279,7 @@
 									
 								</ul>
 							</div>
-						  </div>
+						  </div> -->
 						  
 						  
 						  
@@ -429,6 +451,451 @@
 					</ul>
 				</div>
 			</nav>
+            <main class="content">
+				<div class="container-fluid p-0">
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-4 d-flex">
+                            <div class="card flex-fill w-100" style="background-color: #153f4d;">
+                                <div class="card-header d-flex" style="background-color: #b8d0f4; gap: 10px; align-items: center;">
+                                    <!-- Imagen con ajuste fluido y centrado, controlando el tamaño -->
+                                    <img src="./imagenes/Estella_Robot-removebg-preview.png" class="img-fluid" style="object-fit: contain; width: 70px; height: auto;" alt="">
+                                
+                                    <!-- Título con tamaño de fuente responsivo -->
+                                    <h1 class="h3 my-2">
+                                        <strong class=" fs-1 fs-sm-5 fs-md-6 fs-lg-4 fs-xl-5" style="font: size 30v;;" id="RobotFont-Dashboard">En que puedo ayudarte?</strong>
+                                    </h1>
+                                </div>
+                                
+								
+								<div class="card-body py-3">
+                                    <div class="row">
+                                        <div class="col-xxl-5 d-flex">
+                                            <div class="w-100">
+                                              <div class="row">
+                                                <!-- Información de préstamos activos -->
+                                                <div class="col-sm-6">
+                                                  <div class="card" style="background-color: #fadfbf;">
+                                                    <div class="card-body">
+                                                      <div class="row align-items-center">
+                                                        <div class="col mt-0">
+                                                          <h5 class="card-title">Puedo obtener el clima por ti</h5>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                          <div class="stat text-success">
+                                                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/evearxpv.json"
+                                                                trigger="loop"
+                                                                delay="100"
+                                                                stroke="bold"
+                                                                colors="primary:#9cf4df,secondary:#104891"
+                                                                style="width:35px;height:35px">
+                                                            </lord-icon>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <h3 class="mt-1 mb-3 fw-bold">Datos como:</h3>
+                                                      <div class="mb-0">
+                                                            <div class="container-fluid rounded text-white fw-bold d-flex align-items-center justify-content-center" style="height: 30px; background-color: #1f5869;">
+                                                                <p class="mb-0">Velocidad del viento...</p>
+                                                            </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <!-- Información de solicitudes pendientes -->
+                                                  <div class="card" style="background-color: #fadfbf;">
+                                                    <div class="card-body">
+                                                      <div class="row align-items-center">
+                                                        <div class="col mt-0">
+                                                          <h5 class="card-title">Administrare tus tareas por ti</h5>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                          <div class="stat text-warning">
+                                                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/cbtlerlm.json"
+                                                                trigger="loop"
+                                                                delay="1000"
+                                                                stroke="bold"
+                                                                state="hover-line"
+                                                                colors="primary:#3a3347,secondary:#ffc738,tertiary:#ebe6ef,quaternary:#f9c9c0,quinary:#3a3347"
+                                                                style="width:35px;height:35px">
+                                                            </lord-icon>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <h3 class="mt-1 mb-3 fw-bold">Acciones</h3>
+                                                      <div class="mb-0">
+                                                        <div class="container-fluid rounded text-white fw-bold d-flex align-items-center justify-content-center" style="height: 30px; background-color: #ceaa4f;">
+                                                            <p class="mb-0">Crear, eliminar y editar</p>
+                                                        </div>
+                                                  </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                          
+                                                <!-- Información adicional -->
+                                                <div class="col-sm-6">
+                                                  <!-- Préstamos completados -->
+                                                  <div class="card" style="background-color: #fadfbf;">
+                                                    <div class="card-body">
+                                                      <div class="row align-items-center">
+                                                        <div class="col mt-0">
+                                                          <h5 class="card-title">Datos sobre Criptomonedas</h5>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                          <div class="stat text-primary">
+                                                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/qjsxzmmg.json"
+                                                                trigger="loop"
+                                                                delay="000"
+                                                                stroke="bold"
+                                                                colors="primary:#0a2e5c,secondary:#7166ee,tertiary:#e88c30"
+                                                                style="width:35px;height:35px">
+                                                            </lord-icon>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <h3 class="mt-1 mb-3 fw-bold">Especificacion</h3>
+                                                      <div class="mb-0">
+                                                        <div class="container-fluid rounded text-white fw-bold d-flex align-items-center justify-content-center" style="height: 30px; background-color: #36185a;">
+                                                            <p class="mb-0">Datos en tiempo real</p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <!-- Tasa de aprobación -->
+                                                  <div class="card" style="background-color: #fadfbf;">
+                                                    <div class="card-body">
+                                                      <div class="row align-items-center">
+                                                        <div class="col mt-0">
+                                                            <h5 class="card-title">Administro tu presupuesto</h5>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                          <div class="stat text-info">
+                                                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/cukgelaw.json"
+                                                                trigger="loop"
+                                                                delay="2000"
+                                                                stroke="bold"
+                                                                state="morph-coins"
+                                                                colors="primary:#0a5c15,secondary:#16c72e,tertiary:#d1fad7"
+                                                                style="width:35px;height:35px">
+                                                            </lord-icon>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <h3 class="mt-1 mb-3 fw-bold">Especificacion</h3>
+                                                      <div class="mb-0">
+                                                        <div class="container-fluid rounded text-white fw-bold d-flex align-items-center justify-content-center" style="height: 30px; background-color: #1a4a21;">
+                                                            <p class="mb-0">Datos en tiempo real</p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <!-- Columna que ocupa toda la fila y alinea el contenido a la izquierda -->
+                                                        <div class="col-12 d-flex align-items-center">
+                                                            <button class="btn">
+                                                                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                                                                <lord-icon
+                                                                    src="https://cdn.lordicon.com/ckooqaow.json"
+                                                                    trigger="loop-on-hover"
+                                                                    delay="500"
+                                                                    stroke="bold"
+                                                                    colors="primary:#b8d0f4,secondary:#2516c7,tertiary:#b8d0f4,quaternary:#0a2e5c,quinary:#7166ee"
+                                                                    style="width:90px;height:90px">
+                                                                </lord-icon>
+
+                                                            </button>
+                                                            <div class="card" style="border-radius: 10px;">
+                                                                <div class="card-body w-100 mx-auto" style="border-radius: 10px; background-color: #fbd1a2;">
+                                                                    <div class="row">
+                                                                        <span class="ms-2">Preciona el boton e indicame que hacer</span>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+									
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 col-md-6 col-xl-6 d-flex order-3 order-xxl-1">
+							<div class="card flex-fill" style="background-color:  rgba(240, 219, 157, 0.527);">
+								<div class="card-header" style="background-color: rgb(176, 254, 206);">
+
+									<h5 class="card-title mb-0 text-dark">Calendario</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="chart">
+											<div id="datetimepicker-dashboard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-6 col-xxl-5 d-flex">
+							<div class="w-100">
+							  <div class="row">
+								<!-- Información de préstamos activos -->
+								<div class="col-sm-6">
+								  <div class="card">
+									<div class="card-body">
+									  <div class="row align-items-center">
+										<div class="col mt-0">
+										  <h5 class="card-title">Préstamos Activos</h5>
+										</div>
+										<div class="col-auto">
+										  <div class="stat text-success">
+											<i class="align-middle" data-feather="dollar-sign"></i>
+										  </div>
+										</div>
+									  </div>
+									  <h1 class="mt-1 mb-3">45</h1>
+									  <div class="mb-0">
+										<span class="text-success">Total en curso:</span>
+										<span class="text-muted">$250,000</span>
+									  </div>
+									</div>
+								  </div>
+								  <!-- Información de solicitudes pendientes -->
+								  <div class="card">
+									<div class="card-body">
+									  <div class="row align-items-center">
+										<div class="col mt-0">
+										  <h5 class="card-title">Solicitudes Pendientes</h5>
+										</div>
+										<div class="col-auto">
+										  <div class="stat text-warning">
+											<i class="align-middle" data-feather="clock"></i>
+										  </div>
+										</div>
+									  </div>
+									  <h1 class="mt-1 mb-3">12</h1>
+									  <div class="mb-0">
+										<span class="text-warning">Revisión en proceso:</span>
+										<span class="text-muted">6 en las últimas 24 horas</span>
+									  </div>
+									</div>
+								  </div>
+								</div>
+						  
+								<!-- Información adicional -->
+								<div class="col-sm-6">
+								  <!-- Préstamos completados -->
+								  <div class="card">
+									<div class="card-body">
+									  <div class="row align-items-center">
+										<div class="col mt-0">
+										  <h5 class="card-title">Préstamos Completados</h5>
+										</div>
+										<div class="col-auto">
+										  <div class="stat text-primary">
+											<i class="align-middle" data-feather="check-circle"></i>
+										  </div>
+										</div>
+									  </div>
+									  <h1 class="mt-1 mb-3">98</h1>
+									  <div class="mb-0">
+										<span class="text-primary">Monto total:</span>
+										<span class="text-muted">$500,000</span>
+									  </div>
+									</div>
+								  </div>
+								  <!-- Tasa de aprobación -->
+								  <div class="card">
+									<div class="card-body">
+									  <div class="row align-items-center">
+										<div class="col mt-0">
+										  <h5 class="card-title">Tasa de Aprobación</h5>
+										</div>
+										<div class="col-auto">
+										  <div class="stat text-info">
+											<i class="align-middle" data-feather="trending-up"></i>
+										  </div>
+										</div>
+									  </div>
+									  <h1 class="mt-1 mb-3 text-success">85%</h1>
+									  <div class="mb-0">
+										<span class="text-info">Clientes satisfechos:</span>
+										<span class="text-muted">450+ en total</span>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						  
+						
+					</div>
+						
+						
+							
+					
+						
+					<div class="row">
+						<div class="col-2 col-md-6 col-xl-6 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Informacions sobre tareas</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="py-3">
+											<div class="chart chart-xs">
+												<canvas id="chartjs-dashboard-pie"></canvas>
+											</div>
+										</div>
+
+										<table class="table mb-0">
+											<tbody>
+												<tr>
+													<td class="text-success">Realizadas</td>
+													<td class="text-end">3000</td>
+												</tr>
+												<tr>
+													<td class="text-warning">Pendientes</td>
+													<td class="text-end">2300</td>
+												</tr>
+												<tr>
+													<td class="text-danger">Pendientes</td>
+													<td class="text-end">1000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						 <!-- <div class="col-12 col-md-4 col-xl-6 d-flex order-3 order-xxl-2">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Real-Time</h5>
+								</div>
+								<div class="card-body px-4">
+									<div id="world_map" style="height:350px;"></div>
+								</div>
+							</div>
+						</div> -->
+					
+					<!-- </div> -->
+
+					<!-- <div class="row">
+						<div class="col-12  col-lg-8 col-xl-9 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Ultimos proyectos</h5>
+								</div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th class="d-none d-xl-table-cell">Fecha de inicio</th>
+											<th class="d-none d-xl-table-cell">Fecha de fin</th>
+											<th>Estado</th>
+											<th class="d-none d-md-table-cell">Creador</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Proyecto CRM</td>
+											<td class="d-none d-xl-table-cell">10/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Juan perez</td>
+										</tr>
+										<tr>
+											<td>Proyecto Administrador veterinaria</td>
+											<td class="d-none d-xl-table-cell">09/10/2024</td>
+											<td class="d-none d-xl-table-cell">31/10/2024</td>
+											<td><span class="badge bg-danger">Pendiente</span></td>
+											<td class="d-none d-md-table-cell">German Lopez</td>
+										</tr>
+										<tr>
+											<td>Projecto Ventas</td>
+											<td class="d-none d-xl-table-cell">01/11/2024</td>
+											<td class="d-none d-xl-table-cell">17/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Ramirez</td>
+										</tr>
+										<tr>
+											<td>Projecto Restaurante</td>
+											<td class="d-none d-xl-table-cell">24/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/10/2025</td>
+											<td><span class="badge bg-warning">En progreso</span></td>
+											<td class="d-none d-md-table-cell">Carlos Almanzar</td>
+										</tr>
+										<tr>
+											<td>Projecto SuperMercado</td>
+											<td class="d-none d-xl-table-cell">22/11/2024</td>
+											<td class="d-none d-xl-table-cell">31/06/2026</td>
+											<td><span class="badge bg-warning">En progreso</span></td>
+											<td class="d-none d-md-table-cell"> Miguel Garcia</td>
+										</tr>
+										<tr>
+											<td>Projecto Gastos semanales</td>
+											<td class="d-none d-xl-table-cell">17/10/2024</td>
+											<td class="d-none d-xl-table-cell">28/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Pavel Perez</td>
+										</tr>
+										<tr>
+											<td>Project lavanderia</td>
+											<td class="d-none d-xl-table-cell">08/08/2024</td>
+											<td class="d-none d-xl-table-cell">31/10/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Ambar Garcia</td>
+										</tr>
+										<!-- <tr>
+											<td>Project Wombat</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					<div class="col-12 col-lg-4 col-xxl-3 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Vista mensual</h5>
+								</div>
+								<div class="card-body d-flex w-100">
+									<div class="align-self-center chart chart-lg">
+										<canvas id="chartjs-dashboard-bar"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div> -->
+			</main>
 
 			
 
