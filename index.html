@@ -254,13 +254,14 @@
 						<a href="#" class="list-group-item">
 							<!-- <button type="button" class="btn btn-danger" id="download-btn">descargar aplicacion</button> -->
 						</a>
-                        <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="">
-                        <div class="container rounded" style="height: 40px; background-color: #1f5869;width: 30vw">
-                            <div class="container rounded my-2">
-                                <p id="navFont" class="align-middle">Sabias que Estella es...</p>
-
-                            </div>
-                        </div>
+                        <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="" id="imgPopover" data-bs-toggle="popover" data-bs-placement="left" title="Soy Estella, tu asistente virtual" data-bs-content="Este es el popover hacia la izquierda." data-bs-custom-class="custom-popover">
+                        <div class="container rounded overflow-hidden position-relative" style="height: 40px; background-color: #1f5869; width: 30vw;">
+							<div class="moving-text" style="white-space: nowrap; color: white; font-size: 1rem; position: absolute;">
+								<p  id="RobotFont">
+									Este texto se mueve hacia la derecha y aparece desde la izquierda.
+								</p>
+							</div>
+						</div>
 						<!-- <div style="position: relative; width: 100%; max-width: 500px; margin: auto;">
 							<form class=" d-flex" style="width: 100%; margin: auto;">
 							  <input 
@@ -455,15 +456,15 @@
 				<div class="container-fluid p-0">
 
                     <div class="row">
-                        <div class="col-xl-6 col-lg-4 d-flex">
-                            <div class="card flex-fill w-100" style="background-color: #153f4d;">
-                                <div class="card-header d-flex" style="background-color: #b8d0f4; gap: 10px; align-items: center;">
+                        <div class="col-xl-6 col-lg-8 d-flex">
+                            <div class="card flex-fill w-100" style="background-color: #e8f6fb;">
+                                <div class="card-header d-flex" style="background-color: #c1d4f9; gap: 10px; align-items: center;">
                                     <!-- Imagen con ajuste fluido y centrado, controlando el tamaño -->
                                     <img src="./imagenes/Estella_Robot-removebg-preview.png" class="img-fluid" style="object-fit: contain; width: 70px; height: auto;" alt="">
                                 
                                     <!-- Título con tamaño de fuente responsivo -->
                                     <h1 class="h3 my-2">
-                                        <strong class=" fs-1 fs-sm-5 fs-md-6 fs-lg-4 fs-xl-5" style="font: size 30v;;" id="RobotFont-Dashboard">En que puedo ayudarte?</strong>
+                                        <strong class=" fs-1 fs-sm-5 fs-md-6 fs-lg-4 fs-xl-5" style="font: size 35v;" id="RobotFont-Dashboard">En que puedo ayudarte?</strong>
                                     </h1>
                                 </div>
                                 
@@ -637,6 +638,46 @@
 						<div class="col-lg-4 col-md-6 col-xl-6 d-flex order-3 order-xxl-1">
 							<div class="col-lg-12">
 								<div class="card border rounded shadow-sm p-3" style="background-color: #c4e5ee;">
+									<div class="d-flex justify-content-center align-items-center vh-20">
+										<div class="container text-center">
+											<button type="button" class="btn text-white mb-3" style="background-color: #8abab6;">
+												ChatBox VA <i data-feather="user"></i>
+											</button>
+											<button type="button" class="btn text-white mb-3" style="background-color: #8abab6;">
+												Click para <i data-feather="user"></i>
+											</button>
+										</div>
+									</div>
+									<div class="sidebar-item align-items-center justify-content-center">
+										<div class="d-flex justify-content-center">
+										  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+										  <div class="stat" style="background-color: #1f5869;">
+											  <lord-icon
+											  class="align-middle"
+												  src="https://cdn.lordicon.com/jdgfsfzr.json"
+												  trigger="loop"
+												  delay="2000"
+												  colors="primary:#66d7ee,secondary:#16a9c7"
+												  style="width:35px;height:35px">
+											  </lord-icon>
+										  </div>
+										  <span class="align-middle mx-2  fs-2 fs-sm-4 fs-md-3 fs-xl-1 d-flex  text-nowrap" id="RobotFont-Dashboard" style="font-size: 40vh;">
+											ChatBox de EstellaVa
+										</span>
+										<div class="stat" style="background-color: #1f5869;">
+											<lord-icon
+											class="align-middle"
+												src="https://cdn.lordicon.com/jdgfsfzr.json"
+												trigger="loop"
+												delay="2000"
+												colors="primary:#66d7ee,secondary:#16a9c7"
+												style="width:35px;height:35px">
+											</lord-icon>
+										</div>
+										
+										</div>
+									</div>
+									
 									<h4 class="text-center mb-3 card-title">Preguntame lo que quieras</h4>
 									<!-- Ventana del chat -->
 									<div id="chatWindow" class="border p-2 overflow-auto" style="height: 300px; background-color: #f7f9fc; border-radius: 8px;">
@@ -920,6 +961,13 @@
 	<script src="js/app.js"></script>
 	<script src="js/document.js"></script>
 	<script src="./js/prueba.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Inicializa el popover para el elemento
+    const popoverTrigger = new bootstrap.Popover(document.getElementById('imgPopover'), {
+        trigger: 'hover' // Configura para que se active cuando el mouse pase sobre la imagen
+    });
+</script>
 	<script>
 		const chatWindow = document.getElementById("chatWindow");
 		const userInput = document.getElementById("userInput");
@@ -995,9 +1043,7 @@
 	
 		// Guardar chat
 		saveChat.addEventListener("click", () => {
-			if (chatHistory.length > 0) {
-				console.log(savedChatsData[0].history[0].message)
-				
+			if (chatHistory.length >= 0) {				
 				const chatName = `chat ${new Date().toLocaleString()}`;
 				savedChatsData.push({ name: chatName, history: [...chatHistory] });
 				saveToLocalStorage(); // Guardar en almacenamiento local
