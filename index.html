@@ -999,147 +999,151 @@
 
 
 <script>
-    // Inicializa el popover para el elemento
+    // Inicializa el popover para el elementobox
     const popoverTrigger = new bootstrap.Popover(document.getElementById('imgPopover'), {
         trigger: 'hover' // Configura para que se active cuando el mouse pase sobre la imagen
     });
 </script>
 	<script>
 		const chatWindow = document.getElementById("chatWindow");
-		const userInput = document.getElementById("userInput");
-		const voiceButton = document.getElementById("voiceButton");
-		const clearChat = document.getElementById("clearChat");
-		const saveChat = document.getElementById("saveChat");
-		const savedChats = document.getElementById("savedChats");
-	
-		let chatHistory = [];
-		let savedChatsData = JSON.parse(localStorage.getItem("savedChatsData")) || []; // Recuperar datos guardados
-	
-		const GOOGLE_API_KEY = "AIzaSyANb-3JWKBgTpLLSA5-iTSfM5Q0fRGuv2o"; // Tu API key
-		const CX = "734072da802984e1d"; // Tu CX
-		const guardarenLS=localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
-	
-		// Función para renderizar los chats guardados
-		function renderSavedChats() {
-			savedChats.innerHTML = ""; // Limpiar la lista de chats guardados
-			savedChatsData.forEach((chat, index) => {
-				const chatItem = document.createElement("div");
-				chatItem.classList.add("mb-2", "p-2", "border", "rounded", "bg-light", "d-flex", "justify-content-between", "align-items-center");
-	
-				const chatName = document.createElement("span");
-				chatName.textContent = chat.name;
-				chatName.style.cursor = "pointer";
-	
-				chatName.addEventListener("click", () => {
-					// Mostrar el contenido del chat guardado
-					chatWindow.innerHTML = "";
-					chat.history.forEach(msg => {
-						addMessage(msg.sender, msg.message, msg.color, msg.sender === "Usuario" ? "right" : "left");
-					});
-				});
-	
-				const deleteButton = document.createElement("button");
-				deleteButton.textContent = "❌";
-				deleteButton.classList.add("btn", "btn-sm", "btn-danger");
-				deleteButton.addEventListener("click", () => {
-					// Eliminar el chat guardado
-					savedChatsData.splice(index, 1);
-					saveToLocalStorage(); // Guardar en almacenamiento local
-					renderSavedChats(); // Actualizar la interfaz
-				});
-	
-				chatItem.appendChild(chatName);
-				chatItem.appendChild(deleteButton);
-				savedChats.appendChild(chatItem);
-			});
-		}
-	
-		// Función para guardar datos en almacenamiento local
-		function saveToLocalStorage() {
-			guardarenLS;
-			
-		}
-	
-		// Función para añadir un mensaje al chat
-		function addMessage(sender, message, color, align) {
-			const messageDiv = document.createElement("div");
-			messageDiv.classList.add("mb-2", "p-2", "rounded");
-			messageDiv.style.backgroundColor = color;
-			messageDiv.style.maxWidth = "80%";
-			messageDiv.style.marginLeft = align === "left" ? "0" : "auto";
-			messageDiv.style.marginRight = align === "right" ? "0" : "auto";
-			messageDiv.style.textAlign = align;
-			messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
-			chatWindow.appendChild(messageDiv);
-			chatWindow.scrollTop = chatWindow.scrollHeight;
-	
-			// Guardar en el historial del chat
-			chatHistory.push({ sender, message, color });
-		}
-	
-		// Guardar chat
-		saveChat.addEventListener("click", () => {
-			if (chatHistory.length >= 0) {				
-				const chatName = `chat ${new Date().toLocaleString()}`;
-				savedChatsData.push({ name: chatName, history: [...chatHistory] });
-				saveToLocalStorage(); // Guardar en almacenamiento local
-				renderSavedChats(); // Actualizar la lista de chats guardados
-				chatHistory = []; // Limpiar el historial actual
-				chatWindow.innerHTML = ""; // Limpiar la ventana del chat
-			} else {
-				console.log("No hay mensajes para guardar.");
-			}
-		});
-	
-		// Borrar chat actual
-		clearChat.addEventListener("click", () => {
-			chatHistory = [];
-			chatWindow.innerHTML = "";
-		});
-	
-		// Reconocimiento de voz
-		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-		const recognition = new SpeechRecognition();
-		recognition.lang = "es-ES";
-	
-		recognition.onstart = () => {
-			voiceButton.textContent = "Escuchando...";
-		};
-	
-		recognition.onend = () => {
-			voiceButton.textContent = "🎤";
-		};
-	
-		recognition.onresult = (event) => {
-			const transcript = event.results[0][0].transcript;
-			addMessage("Usuario", transcript, "#d4f7c1", "right");
-			fetchSearchResults(transcript);
-		};
-	
-		voiceButton.addEventListener("click", () => {
-			recognition.start();
-		});
-	
-		// Función para buscar en Google
-		async function fetchSearchResults(query) {
-			try {
-				const response = await fetch(
-					`https://www.googleapis.com/customsearch/v1?q=${query}&key=${GOOGLE_API_KEY}&cx=${CX}`
-				);
-				const data = await response.json();
-				if (data.items && data.items.length > 0) {
-					const snippet = data.items[0].snippet || "No se encontró información relevante.";
-					addMessage("Asistente", snippet, "#f1d7e5", "left");
-				} else {
-					addMessage("Asistente", "No se encontraron resultados.", "#f1d7e5", "left");
-				}
-			} catch (error) {
-				addMessage("Asistente", "Error al realizar la búsqueda.", "#f1d7e5", "left");
-			}
-		}
-	
-		// Renderizar chats guardados al cargar la página
-		document.addEventListener("DOMContentLoaded", renderSavedChats);
+const userInput = document.getElementById("userInput");
+const voiceButton = document.getElementById("voiceButton");
+const sendButton = document.getElementById("sendButton"); // Botón de enviar
+const clearChat = document.getElementById("clearChat");
+const saveChat = document.getElementById("saveChat");
+const savedChats = document.getElementById("savedChats");
+
+let chatHistory = [];
+let savedChatsData = JSON.parse(localStorage.getItem("savedChatsData")) || [];
+
+const GOOGLE_API_KEY = "AIzaSyANb-3JWKBgTpLLSA5-iTSfM5Q0fRGuv2o";
+const CX = "734072da802984e1d";
+
+function renderSavedChats() {
+  savedChats.innerHTML = "";
+  savedChatsData.forEach((chat, index) => {
+    const chatItem = document.createElement("div");
+    chatItem.classList.add("mb-2", "p-2", "border", "rounded", "bg-light", "d-flex", "justify-content-between", "align-items-center");
+
+    const chatName = document.createElement("span");
+    chatName.textContent = chat.name;
+    chatName.style.cursor = "pointer";
+
+    chatName.addEventListener("click", () => {
+      chatWindow.innerHTML = "";
+      chat.history.forEach(msg => {
+        addMessage(msg.sender, msg.message, msg.color, msg.sender === "Usuario" ? "right" : "left");
+      });
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "❌";
+    deleteButton.classList.add("btn", "btn-sm", "btn-danger");
+    deleteButton.addEventListener("click", () => {
+      savedChatsData.splice(index, 1);
+      saveToLocalStorage();
+      renderSavedChats();
+    });
+
+    chatItem.appendChild(chatName);
+    chatItem.appendChild(deleteButton);
+    savedChats.appendChild(chatItem);
+  });
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
+}
+
+function addMessage(sender, message, color, align) {
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("mb-2", "p-2", "rounded");
+  messageDiv.style.backgroundColor = color;
+  messageDiv.style.maxWidth = "80%";
+  messageDiv.style.marginLeft = align === "left" ? "0" : "auto";
+  messageDiv.style.marginRight = align === "right" ? "0" : "auto";
+  messageDiv.style.textAlign = align;
+  messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+  chatWindow.appendChild(messageDiv);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+
+  chatHistory.push({ sender, message, color });
+}
+
+saveChat.addEventListener("click", () => {
+  if (chatHistory.length > 0) {
+    const chatName = `chat ${new Date().toLocaleString()}`;
+    savedChatsData.push({ name: chatName, history: [...chatHistory] });
+    saveToLocalStorage();
+    renderSavedChats();
+    chatHistory = [];
+    chatWindow.innerHTML = "";
+  } else {
+    console.log("No hay mensajes para guardar.");
+  }
+});
+
+clearChat.addEventListener("click", () => {
+  chatHistory = [];
+  chatWindow.innerHTML = "";
+});
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.lang = "es-ES";
+
+recognition.onstart = () => {
+  voiceButton.textContent = "Escuchando...";
+};
+
+recognition.onend = () => {
+  voiceButton.textContent = "🎤";
+};
+
+recognition.onresult = (event) => {
+  const transcript = event.results[0][0].transcript;
+  addMessage("Usuario", transcript, "#d4f7c1", "right");
+  fetchSearchResults(transcript);
+};
+
+recognition.onerror = (event) => {
+  console.error("Error en el reconocimiento de voz:", event.error);
+  addMessage("Asistente", "Error con el reconocimiento de voz. Verifica tu micrófono y permisos.", "#f1d7e5", "left");
+};
+
+voiceButton.addEventListener("click", () => {
+  recognition.start();
+});
+
+sendButton.addEventListener("click", () => {
+  const userMessage = userInput.value.trim();
+  if (userMessage) {
+    addMessage("Usuario", userMessage, "#d4f7c1", "right");
+    fetchSearchResults(userMessage);
+    userInput.value = "";
+  }
+});
+
+async function fetchSearchResults(query) {
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/customsearch/v1?q=${query}&key=${GOOGLE_API_KEY}&cx=${CX}`
+    );
+    const data = await response.json();
+    if (data.items && data.items.length > 0) {
+      const snippet = data.items[0].snippet || "No se encontró información relevante.";
+      addMessage("Asistente", snippet, "#f1d7e5", "left");
+    } else {
+      addMessage("Asistente", "No se encontraron resultados.", "#f1d7e5", "left");
+    }
+  } catch (error) {
+    console.error("Error al realizar la búsqueda:", error);
+    addMessage("Asistente", "Error al realizar la búsqueda.", "#f1d7e5", "left");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", renderSavedChats);
+
 	</script>
 	
 	
