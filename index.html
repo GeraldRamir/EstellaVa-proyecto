@@ -1055,10 +1055,11 @@ function saveToLocalStorage() {
   localStorage.setItem("savedChatsData", JSON.stringify(savedChatsData));
 }
 
-function addMessage(sender, message, color, align) {
+function addMessage(sender, message, color, align, colorFont) {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("mb-2", "p-2", "rounded");
   messageDiv.style.backgroundColor = color;
+  messageDiv.style.color = colorFont;
   messageDiv.style.maxWidth = "80%";
   messageDiv.style.marginLeft = align === "left" ? "0" : "auto";
   messageDiv.style.marginRight = align === "right" ? "0" : "auto";
@@ -1102,7 +1103,7 @@ recognition.onend = () => {
 
 recognition.onresult = (event) => {
   const transcript = event.results[0][0].transcript;
-  addMessage("Usuario", transcript, "#d4f7c1", "right");
+  addMessage("Usuario", transcript, "#1f5869", "right", "#c2f3f0");
   fetchSearchResults(transcript);
 };
 
@@ -1118,7 +1119,7 @@ voiceButton.addEventListener("click", () => {
 sendButton.addEventListener("click", () => {
   const userMessage = userInput.value.trim();
   if (userMessage) {
-    addMessage("Usuario", userMessage, "#d4f7c1", "right");
+    addMessage("Usuario", userMessage, "#1f5869", "right", "#feffff");
     fetchSearchResults(userMessage);
     userInput.value = "";
   }
@@ -1132,7 +1133,7 @@ async function fetchSearchResults(query) {
     const data = await response.json();
     if (data.items && data.items.length > 0) {
       const snippet = data.items[0].snippet || "No se encontró información relevante.";
-      addMessage("Asistente", snippet, "#f1d7e5", "left");
+      addMessage("Asistente", snippet, "#c2f3f0", "left");
     } else {
       addMessage("Asistente", "No se encontraron resultados.", "#f1d7e5", "left");
     }
