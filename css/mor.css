@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Oswald:wght@200..700&family=Passion+One:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Jersey+20&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 #SidebarI{
     font-family: "Jersey 10", sans-serif;
@@ -29,6 +30,13 @@
     font-style: normal;
     font-size: 28px;
 
+}
+#RobotFont-temps{
+
+    font-family: "Jersey 10", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color:#0b3c49;
 }
 #RobotFont-Dashboard{
     color: #1f5869;
