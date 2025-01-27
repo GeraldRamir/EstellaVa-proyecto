@@ -52,6 +52,23 @@
     font-style: normal;
     font-size: 20px;
 }
+#reloj{
+    width: 2.5vw;
+    height: 5.5vh;
+}
+#reloj2{
+    width: 2.5vw;
+    height: 5.5vh;
+ 
+}
+
+#fechaActual{
+    font-family: "Jersey 10", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color:#0b3c49;
+    font-size: 4vh;
+}
 
 .climaFontDay{
     color: #f3f8f8;

@@ -1,5 +1,5 @@
 const dia= document.querySelector('#dia');
-// const tituloFechaAct= document.querySelector('#fechaActual');
+const tituloFechaAct= document.querySelector('#fechaActual');
 // const formulario= document.querySelector('#formulario')
 // const tituloActual= document.querySelector('#tituloActual');
 // const imgClima= document.querySelector('#imgClima');
@@ -13,9 +13,9 @@ const dia= document.querySelector('#dia');
 
 // btnMicrofono.addEventListener('click',ejecutarSpeech)
 
-// moment.locale('es');  
-// const fechaActual= moment().format('LL');
-// tituloFechaAct.textContent= fechaActual;
+moment.locale('es');  
+const fechaActual= moment().format('LL');
+tituloFechaAct.textContent= fechaActual;
 const diaActual= moment().format('dddd');
 dia.textContent=`${diaActual}`;
 

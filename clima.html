@@ -454,15 +454,20 @@
 			</nav>
             <main class="content justify-content-center">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-10 col-lg-8 px-0"> <!-- Quitamos padding lateral con px-0 -->
+                    <div class="col-xl-10 col-lg-2"> <!-- Quitamos padding lateral con px-0 -->
                         <div class="card flex-fill w-100" style="background-color: #bee8f7; border-radius: 30px;">
-                            <div class="card-header d-flex" style="background-color: #bee8f7; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                <h1 class="h3 my-2">
-                                    <strong id="RobotFont-Dashboard" style="font-size: 40px;">Clima actual</strong>
-                                </h1>
-                            </div>
-                
-                            <div class="card-body py-3 mb-4" style="border-radius: 20px; padding: 0;"> <!-- Eliminamos padding interior -->
+							<div class="card-header d-flex flex-column flex-md-row" style="background-color: #bee8f7; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+								<h1 class="h3 my-2">
+									<strong id="RobotFont-Dashboard" style="font-size: 70px;">Clima actual</strong>
+								</h1>
+								<div id="fecha" class="d-flex mx-auto mt-3 mt-md-0" style="gap: 10px;">
+									<img src="./imagenes/clock.png" alt="reloj" id="reloj" class="img-fluid">
+									<h4 id="fechaActual" class="mt-1"></h4>
+									<img src="./imagenes/clock.png" alt="reloj" id="reloj2" class="img-fluid">
+								</div>
+							</div>
+							
+                            <div class="card-body py-3 mb-2" style="border-radius: 20px; padding: 0;"> <!-- Eliminamos padding interior -->
                                 <div class="row mx-0"> <!-- Quitamos margen lateral con mx-0 -->
                                     <div class="col-12 px-0"> <!-- Aseguramos que ocupe todo el ancho con px-0 -->
                                         <div class="card d-flex align-items-center" style="background-color: #1f5869; border-radius: 0; margin: 0; height: 30%;">
@@ -474,7 +479,7 @@
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="d-flex align-items-center flex-column flex-sm-row">
                                                 <img src="./imagenes/clima-1--unscreen.gif" alt="" class=" img-fluid" style="width: 290px; height: auto;">
-                                                <div class="mb-4" >
+                                                <div>
                                                     <h3 id="tituloActual">TEMPERATURA</h3>
                                                     <h1 id="temperaturaTotal" style="color: #1f5869;">ºC</h1>
                                                     <h3 id="humedad">% DE HUMEDAD</h3>
@@ -486,7 +491,7 @@
                             </div>
                             
                             <!-- Nuevas Cards debajo del contenedor -->
-                            <div class="container mt-4">
+                            <div class="container mb-6">
                                 <div class="row justify-content-center">
                                     <!-- Card 1 -->
                                     <div class="col-12 col-md-3 mb-4">
