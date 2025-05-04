@@ -3,8 +3,8 @@
     "short_name": "EstellaVa",
     "start_url": "/",
     "display": "standalone", 
-    "background_color": "#1f5869",
-    "theme_color": "#1f5869",
+    "background_color": "#c5e8ff",
+    "theme_color": "#c5e8ff",
     "orientation": "portrait-primary",
     "icons": [
       {
