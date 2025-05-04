@@ -1,0 +1,26 @@
+{
+    "name": "EstellaVa",
+    "short_name": "EstellaVa",
+    "start_url": ".",
+    "display": "standalone", 
+    "background_color": "#1f5869",
+    "theme_color": "#1f5869",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "../imagenes/logo72x72.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "../imagenes/logo-120.png",
+        "type": "image/png",
+        "sizes": "120x120"
+      },
+      {
+        "src": "../imagenes/logo-144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      }
+    ]
+  }

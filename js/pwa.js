@@ -1,32 +1,28 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./serviceWorker.js')
-        .then(register => console.log('SW registrado', register))
-        .catch(error => console.log(error));
-} else {
-    console.log('No soportado');
-}
-
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevenir que el prompt se muestre automáticamente
+    navigator.serviceWorker.register('./js/serviceWorker.js')
+      .then(reg => console.log('✅ SW registrado:', reg))
+      .catch(err => console.error('❌ Error al registrar el SW:', err));
+  } else {
+    console.log('❌ Service Workers no soportados');
+  }
+  
+  let deferredPrompt;
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-   
-    document.getElementById('download-btn').style.display = 'block'; // Muestra el botón
-});
-
-document.querySelector('#download-btn').addEventListener('click', () => {
+  
+    // Intentar mostrar el prompt de instalación automáticamente
     if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('Usuario aceptó la instalación de la PWA');
-            } else {
-                console.log('Usuario rechazó la instalación de la PWA');
-            }
-            deferredPrompt = null;
-        });
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choice => {
+        if (choice.outcome === 'accepted') {
+          console.log('✅ Usuario aceptó la instalación');
+        } else {
+          console.log('❌ Usuario rechazó la instalación');
+        }
+        deferredPrompt = null;
+      });
     }
-});
-
+  });
+  

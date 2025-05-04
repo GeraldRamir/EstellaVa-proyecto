@@ -47,7 +47,20 @@
       border-radius: 5px;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 10;
-		}
+
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* asegura que el sidebar tenga la altura de la pantalla */
+  overflow: hidden; /* evita que el scroll se aplique al nav completo */
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto; /* solo esta parte podrá hacer scroll */
+}
    
 	  
 		/* Media Query para pantallas pequeñas */
@@ -98,7 +111,7 @@
                         style="width:35px;height:35px">
                         
                     </lord-icon>
-					<span class="align-middle" id="RobotFont">Obtener el Clima</span>
+					<span class="align-middle" id="RobotFont">Obtener Clima</span>
 				  </a>
 				</li>
                 <li class="sidebar-item">
@@ -220,7 +233,7 @@
                         colors="primary:#66d7ee,secondary:#16a9c7"
                         style="width:35px;height:35px">
                     </lord-icon>
-					<span class="align-middle" id="RobotFont">Sobre nosotros</span>
+					<span class="align-middle" id="RobotFont">Nosotros</span>
 				  </a>
 				</li>
 		  
@@ -256,7 +269,7 @@
 						</a>
                         <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="" id="imgPopover" data-bs-toggle="popover" data-bs-placement="left" title="Soy Estella, tu asistente virtual" data-bs-content="Estoy aquí para ayudarte con tareas, responder preguntas." data-bs-custom-class="custom-popover">
                         <div class="container rounded overflow-hidden position-relative" style="height: 40px; background-color: #1f5869; width: 30vw;">
-							<div class="moving-text card-title" style="white-space: nowrap; color: rgb(6, 6, 6); font-size: 1rem; position: absolute;">
+							<div class="moving-text card-title" style="white-space: nowrap; color: rgb(171, 29, 29); font-size: 1rem; position: absolute;">
 								<p  id="RobotFont">
 									Estella VA by: Gerald Luciano Ramirez.
 								</p>
@@ -281,157 +294,7 @@
 								</ul>
 							</div>
 						  </div> -->
-						  
-						  
-						  
-						  <!-- <div class="container my-4">
-							<div class="input-group">
-							  <input 
-								type="text" 
-								class="form-control form-control-lg" 
-								placeholder="Buscar en el sitio..." 
-								aria-label="Buscar">
-							  <button class="btn btn-primary" type="button">
-								<i class="bi bi-search"></i> Buscar
-							  </button>
-							</div>
-						  </div> -->
-						  
-						  
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 Notificaciones nuevas
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-								
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.8</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
-												<div class="text-muted small mt-1">14h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<!-- <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a> -->
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-									</div>
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
-												<div class="text-muted small mt-1">15m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
+
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
               </a>
@@ -448,103 +311,155 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Cerrar sesion</a>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</nav>
-            <main class="content justify-content-center">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-10 col-lg-2"> <!-- Quitamos padding lateral con px-0 -->
-                        <div class="card flex-fill w-100" style="background-color: #bee8f7; border-radius: 30px;">
-							<div class="card-header d-flex flex-column flex-md-row" style="background-color: #bee8f7; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-								<h1 class="h3 my-2 mx-4">
-									<strong id="RobotFont-Dashboard" style="font-size: 70px;     text-wrap: nowrap;">Clima actual</strong>
-								</h1>
-								<div id="fecha" class="d-flex mx-auto mt-3 mt-md-0" style="gap: 10px;">
-									<img src="./imagenes/clock.png" alt="reloj" id="reloj" class="img-fluid">
-									<h4 id="fechaActual" class="mt-1"></h4>
-									<img src="./imagenes/clock.png" alt="reloj" id="reloj2" class="img-fluid">
-								</div>
+			<main class="content justify-content-center">
+				<div class="row">
+				  <!-- Card Clima a la izquierda -->
+				  <div class="col-xl-5 col-lg-6 d-flex justify-content-start">
+					<div class="card flex-fill w-100" style="background-color: #bee8f7; border-radius: 20px;">
+					  <div class="card-header d-flex flex-column flex-md-row" style="background-color: #bee8f7; align-items: center; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+						<h1 class="h3 my-2 mx-3 d-flex align-items-center">
+						  <strong id="RobotFont-Dashboard" style="font-size: 36px; white-space: nowrap;">Clima actual</strong>
+						  <button class="btn" id="mic-btn">
+							<script src="https://cdn.lordicon.com/lordicon.js"></script>
+							<lord-icon
+							  src="https://cdn.lordicon.com/ckooqaow.json"
+							  trigger="loop-on-hover"
+							  delay="500"
+							  stroke="bold"
+							  colors="primary:#b8d0f4,secondary:#2516c7,tertiary:#b8d0f4,quaternary:#0a2e5c,quinary:#7166ee"
+							  style="width:90px;height:90px">
+							</lord-icon>
+						  </button>
+						</h1>
+			  
+						<div id="fecha" class="d-flex mx-auto mt-2 mt-md-0" style="gap: 6px;">
+						  <img src="./imagenes/clock.png" alt="reloj" id="reloj" class="img-fluid" style="width: 24px;">
+						  <h4 id="fechaActual" class="mt-1" style="font-size: 16px;"></h4>
+						  <img src="./imagenes/clock.png" alt="reloj" id="reloj2" class="img-fluid" style="width: 24px;">
+						</div>
+					  </div>
+			  
+					  <div class="card-body py-2 mb-2" style="border-radius: 15px; padding: 0;">
+						<div class="row mx-0">
+						  <div class="col-12 px-0">
+							<div class="card d-flex align-items-center" style="background-color: #1f5869; border-radius: 0; margin: 0; height: auto;">
+							  <div class="card-body d-flex align-items-center text-start mx-3">
+								<h1 class="card-title text-white climaFontDay" id="dia" style="margin-left: 30px; font-size: 32px;"></h1>
+								<h4 class="card-title text-white climaFontDay" id="hora" style="margin-left: 30px; font-size: 20px;">Hora actual</h4>
+							  </div>
 							</div>
-							
-                            <div class="card-body py-3 mb-2" style="border-radius: 20px; padding: 0;"> <!-- Eliminamos padding interior -->
-                                <div class="row mx-0"> <!-- Quitamos margen lateral con mx-0 -->
-                                    <div class="col-12 px-0"> <!-- Aseguramos que ocupe todo el ancho con px-0 -->
-                                        <div class="card d-flex align-items-center" style="background-color: #1f5869; border-radius: 0; margin: 0; height: 30%;">
-                                            <div class="card-body d-flex align-items-center text-start mx-4">
-                                                <h1 class="card-title text-white climaFontDay" id="dia" style="margin: 0; margin-left: 70px; font-size: 60px;"></h1>
-                                                <h4 class="card-title text-white climaFontDay" id="hora" style="margin: 0; margin-left: 70px; font-size: 30px;">Hora actual</h4>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="d-flex align-items-center flex-column flex-sm-row mx-auto">
-												<div class="d-flex justify-content-start">
-													<img src="./imagenes/clima-1--unscreen.gif" alt="" class="img-fluid" style="width: 390px; height: auto; margin-right: 50%;">
-												</div>
-												
-
-                                                <div>
-                                                    <h3 id="tituloActual">TEMPERATURA</h3>
-                                                    <h1 id="temperaturaTotal" style="color: #1f5869;">ºC</h1>
-                                                    <h3 id="humedad">% DE HUMEDAD</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Nuevas Cards debajo del contenedor -->
-                            <div class="container mb-6">
-                                <div class="row justify-content-center">
-                                    <!-- Card 1 -->
-                                    <div class="col-12 col-md-3 mb-4">
-										<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 25px; padding: 5px; width: 100%; height: auto;">
-											<div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
-												<img src="./imagenes/hot (2).png" alt="tempMax" style="width: 60px; margin-right: 10px;">
-												<div class="mt-2">
-													<h5 class="mt-2" id="RobotFont-temps" style="font-size: 17px; margin-bottom: -10px;">TEMPERATURA MAXIMA</h5>
-													<p style="font-size: 45px; margin: 0;" id="RobotFont-temps">°C</p>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									
-                                    <!-- Card 2 -->
-									<div class="col-12 col-md-3 mb-4">
-										<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 25px; padding: 5px; width: 100%; height: auto;">
-											<div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
-												<img src="./imagenes/hot (2).png" alt="tempMax" style="width: 60px; margin-right: 10px;">
-												<div class="mt-2">
-													<h5 class="mt-2" id="RobotFont-temps" style="font-size: 17px; margin-bottom: -10px;">TEMPERATURA MAXIMA</h5>
-													<p style="font-size: 45px; margin: 0;" id="RobotFont-temps">°C</p>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-                                    <!-- Card 3 -->
-									<div class="col-12 col-md-3 mb-4">
-										<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 25px; padding: 5px; width: 100%; height: auto;">
-											<div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
-												<img src="./imagenes/hot (2).png" alt="tempMax" style="width: 60px; margin-right: 10px;">
-												<div class="mt-2">
-													<h5 class="mt-2" id="RobotFont-temps" style="font-size: 17px; margin-bottom: -10px;">TEMPERATURA MAXIMA</h5>
-													<p style="font-size: 45px; margin: 0;" id="RobotFont-temps">°C</p>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-            </main>
+							<div class="d-flex align-items-center">
+							  <div class="d-flex align-items-center flex-column flex-sm-row mx-auto" id="climaActual">
+								<div class="d-flex justify-content-start">
+								  <div id="spinner"></div>
+								  <img src="./imagenes/clima-1--unscreen.gif" id="imgClima" alt="" class="img-fluid" style="width: 180px; margin-right: 20%;">
+								</div>
+								<div>
+								  <h5 id="tituloActual" style="font-size: 16px;">TEMPERATURA</h5>
+								  <h2 id="temperaturaTotal" style="color: #1f5869; font-size: 28px;">ºC</h2>
+								  <h5 id="humedad" style="font-size: 16px;">% DE HUMEDAD</h5>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+			  
+					  <!-- Nuevas Cards -->
+					  <div class="container mb-4">
+						<div class="row justify-content-center">
+						  <!-- Card 1 -->
+						  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+							<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 20px; padding: 5px; width: 100%; height: auto;">
+							  <div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
+								<img src="./imagenes/hot (2).png" alt="tempMax" style="width: 25px; margin-right: 6px;">
+								<div class="mt-1">
+								  <h6 id="RobotFont-temps" style="font-size: 12px; margin-bottom: -6px;">TEMPERATURA MÁXIMA</h6>
+								  <p style="font-size: 22px; margin: 0;" id="RobotFont-temps" class="gradosMax">°C</p>
+								</div>
+							  </div>
+							</div>
+						  </div>
+			  
+						  <!-- Card 3 -->
+						  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+							<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 20px; padding: 5px; width: 100%; height: auto;">
+							  <div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
+								<img src="./imagenes/cold.png" alt="tempMax" style="width: 25px; margin-right: 6px;">
+								<div class="mt-1">
+								  <h6 id="RobotFont-temps" style="font-size: 12px; margin-bottom: -6px;">TEMPERATURA MINIMA</h6>
+								  <p style="font-size: 22px; margin: 0;" id="RobotFont-temps" class="gradosMin">°C</p>
+								</div>
+							  </div>
+							</div>
+						  </div>
+			  
+						  <!-- Card 2 -->
+						  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+							<div class="card justify-content-center align-items-center" style="background-color: #ffffff98; border-radius: 20px; padding: 5px; width: 100%; height: auto;">
+							  <div class="d-flex card-body text-center" style="padding: 3px; align-items: center;">
+								<img src="./imagenes/cloud.png" alt="tempMax" style="width: 25px; margin-right: 6px;">
+								<div class="mt-1">
+								  <h6 id="RobotFont-temps" style="font-size: 12px; margin-bottom: -6px;">VELOCIDAD VIENTO</h6>
+								  <p style="font-size: 22px; margin: 0;" id="RobotFont-temps" class="velocidadViento">°C</p>
+								</div>
+							  </div>
+							</div>
+						  </div>
+			  
+						</div>
+					  </div>
+					</div>
+				  </div>
+			  
+				  <!-- Nueva columna para el carrusel del clima -->
+				  <div class="col-12 col-lg-6 mb-3 d-flex align-items-stretch">
+					<div class="card text-center w-100" style="background-color: #f0f8ff; border-radius: 20px; padding: 10px; min-height: 520px;">
+					  <h6 style="font-size: 16px;">CARROUSEL DEL CLIMA</h6>
+					  <div id="climaCarousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+						  <div class="carousel-item active">
+							<img src="https://via.placeholder.com/600x400?text=Clima+Soleado" class="d-block w-100" alt="Soleado">
+						  </div>
+						  <div class="carousel-item">
+							<img src="https://via.placeholder.com/600x400?text=Lluvia" class="d-block w-100" alt="Lluvia">
+						  </div>
+						  <div class="carousel-item">
+							<img src="https://via.placeholder.com/600x400?text=Niebla" class="d-block w-100" alt="Niebla">
+						  </div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#climaCarousel" data-bs-slide="prev">
+						  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						  <span class="visually-hidden">Anterior</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#climaCarousel" data-bs-slide="next">
+						  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						  <span class="visually-hidden">Siguiente</span>
+						</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  
+				<!-- Row del gráfico -->
+				<div class="row justify-content-center mb-3 px-3">
+				  <div class="col-12 col-md-10 col-lg-8">
+					<div class="card text-center" style="background-color: #f0f8ff; border-radius: 20px; padding: 20px;">
+					  <h6 style="font-size: 18px;">GRÁFICO DE TEMPERATURA</h6>
+					  <canvas id="tempChart" width="400" height="200"></canvas>
+					</div>
+				  </div>
+				</div>
+			  </main>
+			  
+			  
+			  
+			  
+			
        
 			
 
@@ -553,9 +468,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/es.min.js" integrity="sha512-tgY2qswcbQir80Vp67s5ZdbKikl99YmVXp3V/C4Acthk4gI29ONbQ+MR8B5tpESkNoa0N1P7HnSuzC6nOflrwA==" crossorigin="anonymous"></script>
 
-    <script src="js/clima.js"></script>
+    <script src="./js/clima.js"></script>
 	<!-- <script src="js/app.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('tempChart').getContext('2d');
+
+  const tempChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+      datasets: [{
+        label: 'Temperatura °C',
+        data: [28, 30, 27, 29, 31, 32, 30],
+        borderColor: '#1f5869',
+        backgroundColor: 'rgba(31, 88, 105, 0.2)',
+        fill: true,
+        tension: 0.4,
+        pointRadius: 6,
+        pointHoverRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      animation: {
+        duration: 1500,
+        easing: 'easeInOutQuad'
+      },
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 14
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          ticks: {
+            font: {
+              size: 14
+            }
+          }
+        },
+        x: {
+          ticks: {
+            font: {
+              size: 14
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
 	<!-- Inclusión de Bootstrap y FontAwesome para íconos -->
 	<script>
 		// Cambiar el tema (modo claro/oscuro)
