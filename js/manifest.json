@@ -1,7 +1,7 @@
 {
     "name": "EstellaVa",
     "short_name": "EstellaVa",
-    "start_url": "/main.html",
+    "start_url": "/",
     "display": "standalone", 
     "background_color": "#c5e8ff",
     "theme_color": "#c5e8ff",
