@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     setTimeout(() => {
-        window.location.href='main.html'
+        window.location.href='index.html'
         
-    }, 9000);
+    }, 7000);
 })
