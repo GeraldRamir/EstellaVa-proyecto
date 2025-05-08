@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Oculta las barras de desplazamiento */
+}
+
+.video-container {
+    position: fixed; /* Mantiene el contenedor en una posición fija */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Asegura que el video no desborde el contenedor */
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra toda el área del contenedor sin distorsionar */
+    display: block; /* Asegura que el video ocupe todo el contenedor */
+}
+
