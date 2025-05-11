@@ -14,7 +14,7 @@ const importanciaResumen = document.getElementById("importanciaResumen");
 
 const ctx = document.getElementById("categoryChart").getContext("2d");
 let chart = new Chart(ctx, {
-  type: "line",
+  type: "bar",
   data: {
     labels: ["Trabajo", "Estudio", "Hogar", "Deportes", "Ocio"], // etiquetas de categorías
     datasets: [
