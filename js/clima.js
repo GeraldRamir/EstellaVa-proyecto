@@ -91,7 +91,7 @@ function mostrarClima(datos) {
   
     // Mostrar humedad
     const humedadElement = document.querySelector('#humedad');
-    humedadElement.innerHTML = `${humidity}% DE HUMEDAD`;
+    humedadElement.innerHTML = `${weather[0].icon}% DE HUMEDAD`;
   
     // Mostrar temperatura máxima
     const temperaturaMax = document.querySelector('.gradosMax');

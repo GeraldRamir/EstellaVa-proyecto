@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Tu nombre">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="mobile-web-app-capable" content="yes">
+	<link rel="manifest" href="./js/manifest.json">
+	<meta name="theme-color" content="#1f5869">
+	
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<title>Administrador de proyectos</title>
+
+	<link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/mor.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<style>
+		.responsive-search {
+		  width: 100%; /* Ocupar todo el ancho disponible */
+		  max-width: 800px; /* Límite máximo para pantallas grandes */
+		  margin: auto;
+		}
+	  
+		.responsive-search input {
+		  flex-grow: 1;
+		}
+		.search-pop {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid black;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+		}
+   
+	  
+		/* Media Query para pantallas pequeñas */
+		@media (max-width: 576px) {
+		  .responsive-search {
+			max-width: 100%; /* El formulario ocupa todo el ancho en pantallas pequeñas */
+			padding: 0 10px; /* Agrega espacio horizontal para mejor visualización */
+		  }
+	  
+		  .responsive-search input {
+			width: 100%; /* El input ocupa todo el espacio en pantallas pequeñas */
+		  }
+
+		}
+	  </style>
+	  
+	  
+</head>
+<body>
+    <div class="wrapper">
+        	<nav id="sidebar" class="sidebar js-sidebar bg-primary text-white">
+			<div class="sidebar-content js-simplebar">
+			  <a class="sidebar-brand" href="index.html">
+				<img src="./imagenes/vision.png" alt="" class="img-fluid d-flex align-items-center mx-auto" style="width: 70%;" >
+                <h2 class="text-center" id="SidebarI" style="margin-bottom: -10px; margin-top: -15px;">ESTELLA</h2>
+                <p class="text-center" id="SidebarI">Tu asistente virtual</p>
+			  </a>
+
+		  
+			  <ul class="sidebar-nav">
+                  <li class="sidebar-header">
+                    <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
+				  Panel de Administración
+				</li>
+		  
+				<li class="sidebar-item active">
+				  <a class="sidebar-link" href="clima.html">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/zawvkqfy.json"
+                        trigger="loop"
+                        delay="200"
+                        stroke="bold"
+                        state="loop-cycle"
+                        colors="primary:#66d7ee"
+                        style="width:35px;height:35px">
+                        
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Obtener el Clima</span>
+				  </a>
+				</li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="../users-profile.html">
+                      <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                      <lord-icon
+                    class="align-middle"
+
+                          src="https://cdn.lordicon.com/qukjgmrh.json"
+                          trigger="loop"
+                          delay="70"
+                          colors="primary:#66d7ee,secondary:#eeca66"
+                          style="width:35px;height:35px">
+                      </lord-icon>
+                      <span class="align-middle" id="RobotFont">Criptomonedas</span>
+                    </a>
+                  </li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="admTareas.html">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+
+                        src="https://cdn.lordicon.com/wuvorxbv.json"
+                        trigger="loop"
+                        stroke="bold"
+                        delay="200"
+                        state="hover-line"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Admin. tareas</span>
+				  </a>
+				</li>
+		  
+				
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="login.html">
+                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/iawrhwdo.json"
+                        trigger="loop"
+                        stroke="bold"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Presupuesto</span>
+				  </a>
+				</li>
+		  
+				<li class="sidebar-header">
+                    <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
+                    Manejo de cuenta
+				</li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="Listado-Clientes.html">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/kdduutaw.json"
+                        trigger="loop"
+                        delay="1000"
+                        state="morph-group"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Perfil</span>
+				  </a>
+				</li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="Proyecto3.html">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/gwvmctbb.json"
+                        trigger="loop"
+                        stroke="bold"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        delay="2000"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Cerrar Sesion</span>
+				  </a>
+				</li>
+		  
+				<li class="sidebar-header">
+                    <img src="./imagenes/Estella_robot_help-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
+				  Herramientas y ayuda
+				</li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="#">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/jdgfsfzr.json"
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Ayuda</span>
+				  </a>
+				</li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="#">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/dicvhxpz.json"
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#66d7ee,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Sobre nosotros</span>
+				  </a>
+				</li>
+		  
+				<li class="sidebar-item">
+				  <a class="sidebar-link" href="#">
+					<script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                    class="align-middle"
+                        src="https://cdn.lordicon.com/vpbspaec.json"
+                        trigger="loop"
+                        delay="2000"
+                        colors="primary:#16a9c7,secondary:#16a9c7"
+                        style="width:35px;height:35px">
+                    </lord-icon>
+					<span class="align-middle" id="RobotFont">Contacto</span>
+				  </a>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+          	<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<a href="#" class="list-group-item">
+							<!-- <button type="button" class="btn btn-danger" id="download-btn">descargar aplicacion</button> -->
+						</a>
+                        <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="" id="imgPopover" data-bs-toggle="popover" data-bs-placement="left" title="Soy Estella, tu asistente virtual" data-bs-content="Estoy aquí para ayudarte con tareas, responder preguntas." data-bs-custom-class="custom-popover">
+                        <div class="container rounded overflow-hidden position-relative" style="height: 40px; background-color: #1f5869; width: 30vw;">
+							<div class="moving-text card-title" style="white-space: nowrap; color: rgb(6, 6, 6); font-size: 1rem; position: absolute;">
+								<p  id="RobotFont">
+									Este texto se mueve hacia la derecha y aparece desde la izquierda.
+								</p>
+							</div>
+						</div>
+						<!-- <div style="position: relative; width: 100%; max-width: 500px; margin: auto;">
+							<form class=" d-flex" style="width: 100%; margin: auto;">
+							  <input 
+								class="form-control me-1 align-self-center" 
+								style="background-color: rgba(237, 208, 119, 0.527); border-color: black; flex-grow: 1;" 
+								type="search" 
+								placeholder="Buscar" 
+								aria-label="Buscar" 
+								id="searchInput">
+							  <button class="btn btn-outline-success text-dark" type="submit">
+								<i data-feather="search" class="text-dark"></i>
+							  </button>
+							</form>
+							<div class="search-pop text-dark font-weight-bold" id="searchPop">
+								<ul id="ulSearch">
+									
+								</ul>
+							</div>
+						  </div> -->
+						  
+						  
+						  
+						  <!-- <div class="container my-4">
+							<div class="input-group">
+							  <input 
+								type="text" 
+								class="form-control form-control-lg" 
+								placeholder="Buscar en el sitio..." 
+								aria-label="Buscar">
+							  <button class="btn btn-primary" type="button">
+								<i class="bi bi-search"></i> Buscar
+							  </button>
+							</div>
+						  </div> -->
+						  
+						  
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									4 Notificaciones nuevas
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-danger" data-feather="alert-circle"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Update completed</div>
+												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
+												<div class="text-muted small mt-1">30m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Lorem ipsum</div>
+												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+								
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Login from 192.186.1.8</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">New connection</div>
+												<div class="text-muted small mt-1">Christina accepted your request.</div>
+												<div class="text-muted small mt-1">14h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all notifications</a>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<!-- <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+								</div>
+							</a> -->
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										4 New Messages
+									</div>
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">William Harris</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Christina Mason</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Sharon Lessman</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all messages</a>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+              </a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+      <span class="text-dark">Usuario Registrado</span>
+              </a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>Graficos</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i>Ajuste y privacidad</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Ayuda</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Cerrar sesion</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+            <main class="content">
+				<div class="container mt-4">
+  <h1 class="mb-4 text-center">🧠 Dashboard de Tareas por Voz</h1>
+
+  <div class="row">
+    <!-- Comando por voz -->
+    <div class="col-md-12 mb-4">
+      <div class="card shadow">
+        <div class="card-body text-center">
+          <button id="start-voice" class="btn btn-primary btn-lg mb-2">🎙️ Iniciar Comando por Voz</button>
+          <p id="status" class="text-muted">Habla para agregar una tarea. Ej: "Título limpiar casa descripción con cloro categoría hogar importancia alta"</p>
+        </div>
+      </div>
+    </div>	
+  <div class="row">
+  <!-- Card 1 -->
+  <div class="col-xl-3 col-lg-6 col-md-12 mb-4">
+    <div class="card border-0 shadow-lg" style="height: 100px;">
+      <div class="card-header text-white fw-semibold fs-5 d-flex align-items-center gap-2">
+        <!-- Círculo con icono en el lado izquierdo -->
+        <div class="circle-icon d-flex align-items-center justify-content-center" style="background-color: #0d6efd; width: 60px; height: 60px; border-radius: 90%;">
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/eavqayps.json"
+    trigger="loop"
+    delay="500"
+    state="in-reveal"
+    style="width:50px;height:50px">
+</lord-icon>
+        </div>
+        <i class="bi bi-bar-chart-fill"></i>
+      </div>
+      <div class="card-body">
+        <!-- Contenido de la tarjeta -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="col-xl-3 col-lg-6 col-md-12 mb-4">
+    <div class="card border-0 shadow-lg" style="height: 100px;">
+      <div class="card-header text-white fw-semibold fs-5 d-flex align-items-center gap-2">
+        <!-- Círculo con icono en el lado izquierdo -->
+        <div class="circle-icon d-flex align-items-center justify-content-center" style="background-color: #198754; width: 60px; height: 60px; border-radius: 50%;">
+ <script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/eavqayps.json"
+    trigger="loop"
+    delay="500"
+    state="in-reveal"
+    style="width:50px;height:50px">
+</lord-icon>
+        </div>
+        <i class="bi bi-bar-chart-fill"></i>
+      </div>
+      <div class="card-body">
+        <!-- Contenido de la tarjeta -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="col-xl-3 col-lg-6 col-md-12 mb-4">
+    <div class="card border-0 shadow-lg" style="height: 100px;">
+      <div class="card-header text-white fw-semibold fs-5 d-flex align-items-center gap-2">
+        <!-- Círculo con icono en el lado izquierdo -->
+        <div class="circle-icon d-flex align-items-center justify-content-center" style="background-color: #dc3545; width: 60px; height: 60px; border-radius: 50%;">
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/eavqayps.json"
+    trigger="loop"
+    delay="500"
+    state="in-reveal"
+    style="width:50px;height:50px">
+</lord-icon>
+        </div>
+        <i class="bi bi-bar-chart-fill"></i>
+      </div>
+      <div class="card-body">
+        <!-- Contenido de la tarjeta -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="col-xl-3 col-lg-6 col-md-12 mb-4">
+    <div class="card border-0 shadow-lg" style="height: 100px;">
+      <div class="card-header text-white fw-semibold fs-5 d-flex align-items-center gap-2">
+        <!-- Círculo con icono en el lado izquierdo -->
+        <div class="circle-icon d-flex align-items-center justify-content-center" style="background-color: #fd7e14; width: 60px; height: 60px; border-radius: 50%;">
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/eavqayps.json"
+    trigger="loop"
+    delay="500"
+    state="in-reveal"
+    style="width:50px;height:50px">
+</lord-icon>
+        </div>
+        <i class="bi bi-bar-chart-fill"></i>
+      </div>
+      <div class="card-body">
+        <!-- Contenido de la tarjeta -->
+      </div>
+    </div>
+  </div>
+</div>
+
+	
+                 <!-- Estadísticas -->
+<div class="mb-4 col-xl-9 col-lg-12">
+  <div class="card border-0 shadow-lg rounded-4">
+    <div class="card-header bg-primary text-white fw-semibold fs-5 d-flex align-items-center gap-2">
+      <i class="bi bi-bar-chart-fill"></i> Tareas por Categoría
+    </div>
+    <div class="card-body bg-light rounded-bottom-4">
+      <div class="d-flex flex-wrap justify-content-between">
+        <!-- Leyenda y botón -->
+        <div class="me-4 mb-3">
+          <ul id="leyendaCategorias" style="list-style: none; padding: 0; margin: 0;">
+            <li><span style="color: #0d6efd;">●</span> <strong>Trabajo:</strong> 10 tareas</li>
+            <li><span style="color: #198754;">●</span> <strong>Estudio:</strong> 6 tareas</li>
+            <li><span style="color: #dc3545;">●</span> <strong>Personal:</strong> 4 tareas</li>
+            <li><span style="color: #fd7e14;">●</span> <strong>Urgente:</strong> 2 tareas</li>
+          </ul>
+          <button class="btn btn-primary btn-sm mt-2">Ver Reporte</button>
+        </div>
+        <!-- Gráfico -->
+        <div class="chart-container" style="width: 100%; max-width: 600px; height: 350px;">
+          <canvas id="categoryChart" style="height: 50px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>	
+    <!-- Resumen por importancia -->
+    <div class="col-md-6 col-xl-3 mb-4 h-auto">
+      <div class="card shadow h-100">
+        <div class="card-header fw-bold">🔥 Resumen por Importancia</div>
+        <div class="card-body" id="importanciaResumen">
+          <!-- Contenido generado dinámicamente -->
+        </div>
+      </div>
+    </div>
+
+<div class="col-12 mb-4">
+							<div class="card flex-fill">
+								<div class="card-header">
+                                    <h1 class="display-7 fw-bold">Tareas</h1>
+
+								</div>
+                                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+ <table class="table table-hover my-0" width="100%">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th class="d-none d-xl-table-cell">Fecha de inicio</th>
+											<th class="d-none d-xl-table-cell">Fecha de fin</th>
+											<th>Estado</th>
+											<th class="d-none d-md-table-cell">Creador</th>
+											<th class="d-none d-md-table-cell">Creador</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Proyecto CRM</td>
+											<td class="d-none d-xl-table-cell">10/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Juan perez</td>
+										</tr>
+										<tr>
+											<td>Proyecto CRM</td>
+											<td class="d-none d-xl-table-cell">10/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Juan perez</td>
+										</tr>
+										<tr>
+											<td>Proyecto CRM</td>
+											<td class="d-none d-xl-table-cell">10/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Juan perez</td>
+										</tr>
+										<tr>
+											<td>Proyecto CRM</td>
+											<td class="d-none d-xl-table-cell">10/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Juan perez</td>
+										</tr>
+										<tr>
+											<td>Proyecto Administrador veterinaria</td>
+											<td class="d-none d-xl-table-cell">09/10/2024</td>
+											<td class="d-none d-xl-table-cell">31/10/2024</td>
+											<td><span class="badge bg-danger">Pendiente</span></td>
+											<td class="d-none d-md-table-cell">German Lopez</td>
+										</tr>
+										<tr>
+											<td>Projecto Ventas</td>
+											<td class="d-none d-xl-table-cell">01/11/2024</td>
+											<td class="d-none d-xl-table-cell">17/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Ramirez</td>
+										</tr>
+										<tr>
+											<td>Projecto Restaurante</td>
+											<td class="d-none d-xl-table-cell">24/09/2024</td>
+											<td class="d-none d-xl-table-cell">20/10/2025</td>
+											<td><span class="badge bg-warning">En progreso</span></td>
+											<td class="d-none d-md-table-cell">Carlos Almanzar</td>
+										</tr>
+										<tr>
+											<td>Projecto SuperMercado</td>
+											<td class="d-none d-xl-table-cell">22/11/2024</td>
+											<td class="d-none d-xl-table-cell">31/06/2026</td>
+											<td><span class="badge bg-warning">En progreso</span></td>
+											<td class="d-none d-md-table-cell"> Miguel Garcia</td>
+										</tr>
+										<tr>
+											<td>Projecto Gastos semanales</td>
+											<td class="d-none d-xl-table-cell">17/10/2024</td>
+											<td class="d-none d-xl-table-cell">28/11/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Pavel Perez</td>
+										</tr>
+										<tr>
+											<td>Project lavanderia</td>
+											<td class="d-none d-xl-table-cell">08/08/2024</td>
+											<td class="d-none d-xl-table-cell">31/10/2024</td>
+											<td><span class="badge bg-success">Realizado</span></td>
+											<td class="d-none d-md-table-cell">Ambar Garcia</td>
+										</tr>
+										<tr>
+											<td>Project Wombat</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+									</tbody>
+								</table>
+                                </div>
+					
+							</div>
+						</div>
+                        
+                        
+
+
+
+</div>
+                    
+
+
+
+    <!-- Lista de tareas -->
+    <div class="col-md-12">
+      <div class="card shadow">
+        <div class="card-header fw-bold">📋 Tareas Recientes</div>
+        <div class="card-body" id="task-list">
+          <!-- Tareas insertadas aquí -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal editar tarea -->
+<div class="modal fade" id="editModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Tarea</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-index">
+        <div class="mb-3">
+          <label class="form-label">Título</label>
+          <input type="text" id="edit-titulo" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descripción</label>
+          <input type="text" id="edit-descripcion" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Categoría</label>
+          <input type="text" id="edit-categoria" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Importancia</label>
+          <select id="edit-importancia" class="form-select">
+            <option>Alta</option>
+            <option>Media</option>
+            <option>Baja</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="save-edit" class="btn btn-success">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+			</main>
+
+			
+
+		</div>
+    </div>
+
+
+    <script src="js/pwa.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/document.js"></script>
+	<script src="./js/prueba.js"></script>
+    <script src="./js/Dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    
+</body>
+</html>
