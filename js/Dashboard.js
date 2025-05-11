@@ -1,3 +1,7 @@
+
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // === Variables Globales ===
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -9,8 +13,25 @@ let reconocimientoActivo = false;
 
 const startBtn = document.getElementById("start-voice");
 const statusText = document.getElementById("status");
-const taskList = document.getElementById("task-list");
+const taskList = document.getElementById("listBody");
 const importanciaResumen = document.getElementById("importanciaResumen");
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDG_m71UlmqMJWh2fsmWruogyw4rOZzRyc",
+  authDomain: "ls-conection.firebaseapp.com",
+  projectId: "ls-conection",
+  storageBucket: "ls-conection.firebasestorage.app",
+  messagingSenderId: "355653094451",
+  appId: "1:355653094451:web:6fab60e3511eaada7c6746",
+  measurementId: "G-PP9Y43NE2N"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
+const db = firebase.firestore();
 
 const ctx = document.getElementById("categoryChart").getContext("2d");
 let chart = new Chart(ctx, {
@@ -109,15 +130,15 @@ function actualizarGrafico() {
   // === Leyenda personalizada ===
   const colores = ["#0d6efd", "#198754", "#dc3545", "#fd7e14", "#6f42c1", "#20c997"]; // Azul, verde, rojo, naranja, morado, turquesa
   const leyenda = document.getElementById("leyendaCategorias");
-  leyenda.innerHTML = "";
+  // leyenda.innerHTML = "";
 
-  labels.forEach((cat, i) => {
-    const color = colores[i % colores.length];
-    const cantidad = categorias[cat];
-    const li = document.createElement("li");
-    li.innerHTML = `<span style="color: ${color};">●</span> <strong>${cat}:</strong> ${cantidad} tareas`;
-    leyenda.appendChild(li);
-  });
+  // labels.forEach((cat, i) => {
+  //   const color = colores[i % colores.length];
+  //   const cantidad = categorias[cat];
+  //   const li = document.createElement("li");
+  //   li.innerHTML = `<span style="color: ${color};">●</span> <strong>${cat}:</strong> ${cantidad} tareas`;
+  //   leyenda.appendChild(li);
+  // });
 }
 
 
@@ -135,27 +156,49 @@ function actualizarImportancia() {
 function renderTareas() {
   taskList.innerHTML = "";
   tareas.forEach((t, i) => {
-    const div = document.createElement("div");
-    div.className = "mb-3 p-3 border rounded bg-light d-flex justify-content-between align-items-start";
-    div.innerHTML = `
-      <div>
-        <h5>${t.titulo}</h5>
-        <p>${t.descripcion}</p>
-        <span class="badge bg-primary">${t.categoria}</span>
-        <span class="badge bg-${t.importancia === "Alta" ? "danger" : t.importancia === "Media" ? "warning text-dark" : "success"}">${t.importancia}</span>
-      </div>
-      <button class="btn btn-sm btn-outline-secondary" onclick="editarTarea(${i})">✏️</button>
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${t.titulo}</td>
+      <td>${t.descripcion}</td>
+      <td><span class="badge bg-success">${t.categoria}</span></td>
+      <td>${t.importancia}</td>
     `;
-    taskList.appendChild(div);
+    taskList.appendChild(row);
+  });
+}
+function cargarTareasDesdeFirestore() {
+  db.collection("tareas").get().then((querySnapshot) => {
+    tareas = [];
+    querySnapshot.forEach((doc) => {
+      tareas.push(doc.data());
+    });
+
+    renderTareas();
+    actualizarGrafico();
+    actualizarImportancia();
+  }).catch((error) => {
+    console.error("Error al cargar tareas:", error);
   });
 }
 
+
+
 function agregarTarea(tarea) {
-  tareas.unshift(tarea);
-  renderTareas();
-  actualizarGrafico();
-  actualizarImportancia();
+  db.collection("tareas").add({
+    titulo: tarea.titulo,
+    descripcion: tarea.descripcion,
+    categoria: tarea.categoria,
+    importancia: tarea.importancia
+  })
+  .then(docRef => {
+    console.log("Tarea agregada con ID: ", docRef.id);
+  })
+  .catch(error => {
+    console.error("Error al agregar tarea: ", error);
+  });
 }
+
+
 
 function hablar(texto) {
   return new Promise((resolve) => {
@@ -229,3 +272,7 @@ async function agregarTareaConVoz() {
 
 // Evento de botón
 startBtn.addEventListener("click", agregarTareaConVoz);
+document.addEventListener("DOMContentLoaded", () => {
+cargarTareasDesdeFirestore()
+});
+
