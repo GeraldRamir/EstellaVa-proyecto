@@ -970,10 +970,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function sendNotification() {
     if (Notification.permission === "granted") {
       navigator.serviceWorker.getRegistration().then(reg => {
-        reg.showNotification("⏰ ¡Tiempo terminado!", {
-          body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
-          icon: "./imagenes/Estella robot help.png"
-        });
+          reg.showNotification("⏰ ¡Tiempo terminado!", {
+            body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
+            icon: "/imagenes/Estella_robot_Apps-removebg-preview.png", // ruta al ícono personalizado
+            badge: "/imagenes/Estella_robot_Apps-removebg-preview.png", // (opcional) ícono pequeño que se usa en la barra de estado de Android
+            vibrate: [200, 100, 200],
+            data: {
+              url: "https://estellaapp.netlify.app/admtareas" // puedes usarlo para redireccionar si el usuario toca la notificación
+            }
+          });
+
       });
     }
   }
