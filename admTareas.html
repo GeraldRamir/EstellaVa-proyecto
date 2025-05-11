@@ -43,7 +43,7 @@
 		.search-pop {
       display: none;
       position: absolute;
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(15, 255, 255, 0.9);
       border: 1px solid black;
       padding: 10px;
       margin-top: 5px;
@@ -895,62 +895,112 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
 <!-- Firebase Firestore -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/firebase-messaging-sw.js"></script>
 
 <script src="./js/Dashboard.js"></script>
 
     <script src="js/pwa.js"></script>
-	<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const timerDisplay = document.getElementById("pomodoro-timer");
-    const startBtn = document.getElementById("startPomodoro");
-    const toastEl = document.getElementById("pomodoroToast");
-    let interval;
-    let timeLeft = 1 * 60;
 
-    function updateDisplay() {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-    }
+<!-- <script>
 
-    function showToast() {
-      const toast = new bootstrap.Toast(toastEl);
-      toast.show();
-    }
-    if (Notification.permission !== "granted") {
-  Notification.requestPermission();
-}
 
-function notifyEnd() {
-  if (Notification.permission === "granted") {
-    new Notification("⏰ ¡Tiempo terminado!", {
-      body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
-      icon: "./imagenes/Estella robot help.png" // Ícono opcional
-    });
-  }
-}
+  // Tu configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDG_m71UlmqMJWh2fsmWruogyw4rOZzRyc",
+  authDomain: "ls-conection.firebaseapp.com",
+  projectId: "ls-conection",
+  storageBucket: "ls-conection.firebasestorage.app",
+  messagingSenderId: "355653094451",
+  appId: "1:355653094451:web:6fab60e3511eaada7c6746",
+  measurementId: "G-PP9Y43NE2N"
+};
 
-function startPomodoro() {
-  startBtn.disabled = true;
-  interval = setInterval(() => {
-    if (timeLeft > 0) {
-      timeLeft--;
-      updateDisplay();
+  firebase.initializeApp(firebaseConfig);
+
+  // Inicializa Firebase Cloud Messaging
+  const messaging = firebase.messaging();
+</script> -->
+
+<script>
+
+// Registrar el service worker
+// const messaging = firebase.messaging();
+navigator.serviceWorker.register("/firebase-messaging-sw.js")
+  .then((registration) => {
+    
+    messaging.useServiceWorker(registration);
+
+    // Solicita permiso de notificación
+    return Notification.requestPermission();
+  })
+  .then((permission) => {
+    if (permission === "granted") {
+      return messaging.getToken({
+        vapidKey: "6D5cheBwuN1wMHtwovEBfEFxIw42CghEsVBl6HbV_i0"
+      });
     } else {
-      clearInterval(interval);
-      notifyEnd(); // ✅ Aquí se lanza la notificación
-      startBtn.disabled = false;
-      timeLeft = 1 * 60;
-      updateDisplay();
+      console.error("Permiso denegado para notificaciones");
     }
-  }, 1000);
-}
-
-    startBtn.addEventListener("click", startPomodoro);
-    updateDisplay(); // Mostrar 25:00 al inicio
+  })
+  .then((token) => {
+     console.log("✅ Token FCM:", token);
+      // Puedes guardarlo en LocalStorage, o enviarlo a tu backend si tienes uno
+      localStorage.setItem("fcm_token", token);
+      alert("Token FCM guardado. Puedes copiarlo desde consola.");
+  })
+  .catch((err) => {
+    console.error("Error al registrar Firebase Messaging", err);
   });
+
+// Lógica del temporizador
+document.addEventListener("DOMContentLoaded", () => {
+  const timerDisplay = document.getElementById("pomodoro-timer");
+  const startBtn = document.getElementById("startPomodoro");
+  let interval;
+  let timeLeft = 1 * 60;
+
+  function updateDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  function sendNotification() {
+    if (Notification.permission === "granted") {
+      navigator.serviceWorker.getRegistration().then(reg => {
+        reg.showNotification("⏰ ¡Tiempo terminado!", {
+          body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
+          icon: "./imagenes/Estella robot help.png"
+        });
+      });
+    }
+  }
+
+  function startPomodoro() {
+    startBtn.disabled = true;
+    interval = setInterval(() => {
+      if (timeLeft > 0) {
+        timeLeft--;
+        updateDisplay();
+      } else {
+        clearInterval(interval);
+        sendNotification();
+        startBtn.disabled = false;
+        timeLeft = 1 * 60;
+        updateDisplay();
+      }
+    }, 1000);
+  }
+
+  startBtn.addEventListener("click", startPomodoro);
+  updateDisplay();
+});
+
 </script>
+
+
 
 
 

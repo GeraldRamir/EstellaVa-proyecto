@@ -33,6 +33,8 @@ const app = firebase.initializeApp(firebaseConfig);
 const analytics = firebase.analytics();
 const db = firebase.firestore();
 
+
+
 const ctx = document.getElementById("categoryChart").getContext("2d");
 let chart = new Chart(ctx, {
   type: "bar",
