@@ -645,7 +645,7 @@
 
         <!-- Temporizador y botón -->
         <div class="text-center">
-          <h2 id="pomodoro-timer" class="display-4 fw-bold text-primary">25:00</h2>
+          <h2 id="pomodoro-timer" class="display-4 fw-bold text-primary">1:00</h2>
           <button id="startPomodoro" class="btn btn-success mt-2">Iniciar</button>
         </div>
 
@@ -898,7 +898,7 @@
     const startBtn = document.getElementById("startPomodoro");
     const toastEl = document.getElementById("pomodoroToast");
     let interval;
-    let timeLeft = 25 * 60;
+    let timeLeft = 1 * 60;
 
     function updateDisplay() {
       const minutes = Math.floor(timeLeft / 60);
@@ -910,22 +910,34 @@
       const toast = new bootstrap.Toast(toastEl);
       toast.show();
     }
+    if (Notification.permission !== "granted") {
+  Notification.requestPermission();
+}
 
-    function startPomodoro() {
-      startBtn.disabled = true;
-      interval = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft--;
-          updateDisplay();
-        } else {
-          clearInterval(interval);
-          showToast();
-          startBtn.disabled = false;
-          timeLeft = 25 * 60;
-          updateDisplay();
-        }
-      }, 1000);
+function notifyEnd() {
+  if (Notification.permission === "granted") {
+    new Notification("⏰ ¡Tiempo terminado!", {
+      body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
+      icon: "./imagenes/Estella robot help.png" // Ícono opcional
+    });
+  }
+}
+
+function startPomodoro() {
+  startBtn.disabled = true;
+  interval = setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      updateDisplay();
+    } else {
+      clearInterval(interval);
+      notifyEnd(); // ✅ Aquí se lanza la notificación
+      startBtn.disabled = false;
+      timeLeft = 1 * 60;
+      updateDisplay();
     }
+  }, 1000);
+}
 
     startBtn.addEventListener("click", startPomodoro);
     updateDisplay(); // Mostrar 25:00 al inicio
