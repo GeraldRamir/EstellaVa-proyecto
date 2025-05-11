@@ -744,15 +744,15 @@
  <table class="table table-hover my-0" width="100%">
 									<thead>
 										<tr>
-											<th>Nombre</th>
-											<th class="d-none d-xl-table-cell">Fecha de inicio</th>
-											<th class="d-none d-xl-table-cell">Fecha de fin</th>
+											<th>Tarea</th>
+											<th class="d-none d-xl-table-cell">Descripcion</th>
+											<th class="d-none d-xl-table-cell">Categoria</th>
 											<th>Estado</th>
-											<th class="d-none d-md-table-cell">Creador</th>
+											<th class="d-none d-md-table-cell">Importancia</th>
 											<th class="d-none d-md-table-cell">Creador</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="listBody">
 										<tr>
 											<td>Proyecto CRM</td>
 											<td class="d-none d-xl-table-cell">10/09/2024</td>
@@ -915,12 +915,14 @@
 }
 
 function notifyEnd() {
-  if (Notification.permission === "granted") {
-    new Notification("⏰ ¡Tiempo terminado!", {
-      body: "Tu sesión Pomodoro ha finalizado. Toma un descanso.",
-      icon: "./imagenes/Estella robot help.png" // Ícono opcional
-    });
-  }
+if ("Notification" in window && "serviceWorker" in navigator) {
+  Notification.requestPermission().then(permission => {
+    console.log("Permiso de notificación:", permission);
+  });
+} else {
+  console.log("Tu navegador no soporta notificaciones o service workers.");
+}
+
 }
 
 function startPomodoro() {
