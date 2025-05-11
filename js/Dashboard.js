@@ -194,11 +194,13 @@ function agregarTarea(tarea) {
   })
   .then(docRef => {
     console.log("Tarea agregada con ID: ", docRef.id);
+    cargarTareasDesdeFirestore(); // <--- aquí actualiza todo tras agregar
   })
   .catch(error => {
     console.error("Error al agregar tarea: ", error);
   });
 }
+
 
 
 
