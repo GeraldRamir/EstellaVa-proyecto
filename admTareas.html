@@ -931,16 +931,20 @@ navigator.serviceWorker.register("/firebase-messaging-sw.js")
   .then((registration) => {
     
     messaging.useServiceWorker(registration);
+        const confirmar = confirm("¿Deseas activar las notificaciones para recibir alertas?");
+    if (!confirmar) throw new Error("El usuario rechazó activar notificaciones");
 
     // Solicita permiso de notificación
     return Notification.requestPermission();
   })
   .then((permission) => {
     if (permission === "granted") {
+      alert("✅ Permiso para notificaciones concedido.");
       return messaging.getToken({
         vapidKey: "6D5cheBwuN1wMHtwovEBfEFxIw42CghEsVBl6HbV_i0"
       });
     } else {
+            alert("❌ No se otorgaron permisos para notificaciones.");
       console.error("Permiso denegado para notificaciones");
     }
   })
