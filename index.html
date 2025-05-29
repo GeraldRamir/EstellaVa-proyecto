@@ -86,7 +86,7 @@
 				  Panel de Administración
 				</li>
 		  
-				<li class="sidebar-item active">
+				<li class="sidebar-item ">
 				  <a class="sidebar-link" href="clima.html">
 					<script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon
@@ -154,7 +154,7 @@
 				  </a>
 				</li>
 		  
-				<li class="sidebar-header">
+				<!-- <li class="sidebar-header">
                     <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 15%;" alt="">
                     Manejo de cuenta
 				</li>
@@ -239,7 +239,7 @@
                     </lord-icon>
 					<span class="align-middle" id="RobotFont">Contacto</span>
 				  </a>
-				</li>
+				</li> -->
 			  </ul>
 			</div>
 		  </nav>
@@ -257,200 +257,21 @@
 							<!-- <button type="button" class="btn btn-danger" id="download-btn">descargar aplicacion</button> -->
 						</a>
                         <img src="./imagenes/Estella_robot_Apps-removebg-preview.png" class="img-fluid" style="width: 50px;" alt="" id="imgPopover" data-bs-toggle="popover" data-bs-placement="left" title="Soy Estella, tu asistente virtual" data-bs-content="Estoy aquí para ayudarte con tareas, responder preguntas." data-bs-custom-class="custom-popover">
-                        <div class="container rounded overflow-hidden position-relative" style="height: 40px; background-color: #1f5869; width: 30vw;">
+                        <div class="container rounded overflow-hidden position-relative me-4" style="height: 40px; background-color: #1f5869; width: 30vw;">
 							<div class="moving-text card-title" style="white-space: nowrap; color: rgb(6, 6, 6); font-size: 1rem; position: absolute;">
 								<p  id="RobotFont">
 									Este texto se mueve hacia la derecha y aparece desde la izquierda.
 								</p>
 							</div>
 						</div>
-						<!-- <div style="position: relative; width: 100%; max-width: 500px; margin: auto;">
-							<form class=" d-flex" style="width: 100%; margin: auto;">
-							  <input 
-								class="form-control me-1 align-self-center" 
-								style="background-color: rgba(237, 208, 119, 0.527); border-color: black; flex-grow: 1;" 
-								type="search" 
-								placeholder="Buscar" 
-								aria-label="Buscar" 
-								id="searchInput">
-							  <button class="btn btn-outline-success text-dark" type="submit">
-								<i data-feather="search" class="text-dark"></i>
-							  </button>
-							</form>
-							<div class="search-pop text-dark font-weight-bold" id="searchPop">
-								<ul id="ulSearch">
-									
-								</ul>
-							</div>
-						  </div> -->
-						  
-						  
-						  
-						  <!-- <div class="container my-4">
-							<div class="input-group">
-							  <input 
-								type="text" 
-								class="form-control form-control-lg" 
-								placeholder="Buscar en el sitio..." 
-								aria-label="Buscar">
-							  <button class="btn btn-primary" type="button">
-								<i class="bi bi-search"></i> Buscar
-							  </button>
-							</div>
-						  </div> -->
-						  
-						  
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">4</span>
-								</div>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 Notificaciones nuevas
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-danger" data-feather="alert-circle"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Update completed</div>
-												<div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-												<div class="text-muted small mt-1">30m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-warning" data-feather="bell"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Lorem ipsum</div>
-												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-								
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-primary" data-feather="home"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">Login from 192.186.1.8</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="text-success" data-feather="user-plus"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Christina accepted your request.</div>
-												<div class="text-muted small mt-1">14h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
+						<li class="nav-item d-flex align-items-center gap-2" id="userInfo" style="display: none;">
+							<span id="userEmail" class="card-title"></span>
+							<button id="logoutBtn" class="btn btn-danger rounded m-auto">Cerrar sesión</button>
 						</li>
-						<li class="nav-item dropdown">
-							<!-- <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="message-square"></i>
-								</div>
-							</a> -->
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								<div class="dropdown-menu-header">
-									<div class="position-relative">
-										4 New Messages
-									</div>
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Vanessa Tucker</div>
-												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
-												<div class="text-muted small mt-1">15m ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">William Harris</div>
-												<div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-												<div class="text-muted small mt-1">2h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Christina Mason</div>
-												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-												<div class="text-muted small mt-1">4h ago</div>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
-											</div>
-											<div class="col-10 ps-2">
-												<div class="text-dark">Sharon Lessman</div>
-												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
-												<div class="text-muted small mt-1">5h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all messages</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
 
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-      <span class="text-dark">Usuario Registrado</span>
-              </a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>Graficos</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i>Ajuste y privacidad</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i>Ayuda</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Cerrar sesion</a>
-							</div>
-						</li>
+
+						  
+						
 					</ul>
 				</div>
 			</nav>
@@ -757,6 +578,14 @@
 		</div>
 	</div>
 
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<!-- Firebase Analytics -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="./js/auth-check.js"></script>
+ <script src="./js/authUserInfo.js"></script>
 	<script src="js/pwa.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/document.js"></script>

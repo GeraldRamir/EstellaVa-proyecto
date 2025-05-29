@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Formulario de Registro -->
+<div id="registro-container">
+  <h2>Registro</h2>
+  <form id="formRegistro">
+    <input type="email" id="emailRegistro" placeholder="Correo electrónico" required />
+    <input type="password" id="passwordRegistro" placeholder="Contraseña" required />
+    <button type="submit">Registrarse</button>
+    <p id="mensajeRegistro"></p>
+  </form>
+
+    <!-- Firebase App y Auth -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="./js/registerUser.js"></script>
+
+</div>
+
+    
+</body>
+</html>

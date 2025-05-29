@@ -30,7 +30,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics();
+// const analytics = firebase.analytics();
 const db = firebase.firestore();
 
 
@@ -143,6 +143,16 @@ function actualizarGrafico() {
   // });
 }
 
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    cargarTareasDesdeFirestore();
+  } else {
+    console.warn("No hay usuario autenticado.");
+    // Redirige a login o muestra formulario
+  }
+});
+
+
 
 
 function actualizarImportancia() {
@@ -169,24 +179,40 @@ function renderTareas() {
   });
 }
 function cargarTareasDesdeFirestore() {
-  db.collection("tareas").get().then((querySnapshot) => {
-    tareas = [];
-    querySnapshot.forEach((doc) => {
-      tareas.push(doc.data());
-    });
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    console.error("Usuario no autenticado");
+    return;
+  }
 
-    renderTareas();
-    actualizarGrafico();
-    actualizarImportancia();
-  }).catch((error) => {
-    console.error("Error al cargar tareas:", error);
-  });
+  db.collection("tareas")
+    .where("uid", "==", user.uid)
+    .get()
+    .then((querySnapshot) => {
+      tareas = [];
+      querySnapshot.forEach((doc) => {
+        tareas.push(doc.data());
+      });
+
+      renderTareas();
+      actualizarGrafico();
+      actualizarImportancia();
+    })
+    .catch((error) => {
+      console.error("Error al cargar tareas:", error);
+    });
 }
 
 
 
+
+
 function agregarTarea(tarea) {
+  const user = firebase.auth().currentUser;
+  if (!user) return;
+
   db.collection("tareas").add({
+    uid: user.uid, // 👈 Aquí se asocia la tarea al usuario
     titulo: tarea.titulo,
     descripcion: tarea.descripcion,
     categoria: tarea.categoria,
@@ -200,6 +226,7 @@ function agregarTarea(tarea) {
     console.error("Error al agregar tarea: ", error);
   });
 }
+
 
 
 
