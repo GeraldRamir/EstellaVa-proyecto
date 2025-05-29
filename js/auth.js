@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función de ejemplo: cargar el dashboard solo si el usuario está autenticado
 function cargarDashboard() {
-    window.location.href = "admTareas.html"; // Redirige al dashboard
+    window.location.href = "main.html"; // Redirige al dashboard
 
 }
 document.getElementById("btnLogout").addEventListener("click", () => {
