@@ -7,7 +7,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
   const pass = document.getElementById("password").value;
   iniciarSesion(email, pass);
   if (email && pass) {
-    window.location.href = "admTareas.html"; // Redirige al dashboard
+    window.location.href = "main.html"; // Redirige al dashboard
   }
 
 });
